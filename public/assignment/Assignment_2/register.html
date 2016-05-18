@@ -12,27 +12,34 @@
     <h1>Register</h1>
     <form method="post"
           action="/path/to/form/service">
-        <label for="username"></label>
-        <input name="username"
-               id="username"
-               type="text"
-               placeholder="username"
-               class="form-control"/>
-        <label for="password"></label>
-        <input name="password"
-               id="password"
-               type="password"
-               placeholder="password"
-               class="form-control"/>
-        <label for="passwordVerify"></label>
-        <input name="passwordVerify"
-               id="passwordVerify"
-               type="password"
-               placeholder="verify password"
-               class="form-control"/>
-        <button type="submit" class="btn btn-block btn-primary">Register</button>
+        <fieldset class="form-group">
+            <input name="username"
+                   id="username"
+                   type="text"
+                   placeholder="username"
+                   class="form-control"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <input name="password"
+                   id="password"
+                   type="password"
+                   placeholder="password"
+                   class="form-control"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <input name="passwordVerify"
+                   id="passwordVerify"
+                   type="password"
+                   placeholder="verify password"
+                   class="form-control"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <button type="submit" class="btn btn-block btn-primary">Register</button>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="login.html" class="btn btn-block btn-danger" role="button">Cancel</a>
+        </fieldset>
     </form>
-    <a href="login.html" class="btn btn-block btn-danger" role="button">Cancel</a>
 </body>
 
 </html>
