@@ -17,6 +17,11 @@ form {
     padding: 5%;
 }
 
+td {
+    background-color: white;
+}
+
+
 .navbar-static-top {
     height: auto;
     color: dimgray;
@@ -32,8 +37,12 @@ h3 {
 .Check_Icon {
     display:inline-block;
     float: right;
-    padding-top: 13px;
+    padding-top: 18px;
     padding-right: 5%;
     padding-bottom: 3px;
     color: black;
+}
+
+.container {
+    padding: 2%;
 }
