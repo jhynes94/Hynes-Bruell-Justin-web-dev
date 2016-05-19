@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Profile</title>
+    <link rel="stylesheet" href="CSS/NormalCSS.css">
+    <script src="https://use.fontawesome.com/bfbb94cfc5.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="Left_Icon"><a href="widget-list.html"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <h3>Widget Edit</h3>
+    <div class="Check_Icon"><a href="widget-list.html"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+<div class="container">
+    <form method="post"
+          action="/path/to/form/service">
+
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="size">URL</label>
+                <input type="text" class="form-control" id="size" placeholder="URL" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="width">Width</label>
+                <input type="text" class="form-control" id="width" placeholder="Width" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Browse… <input type="file" multiple="">
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="widget-list.html" class="btn btn-block btn-primary" role="button">Upload</a>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="widget-list.html" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+    </form>
+</div>
+<h3></h3>
+<footer class="footer">
+    <a href="profile.html"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>
+</body>
+
+</html>

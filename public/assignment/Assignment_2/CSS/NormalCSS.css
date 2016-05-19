@@ -1,5 +1,5 @@
 .footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: auto;
@@ -11,6 +11,15 @@
     border: 1px solid transparent;
     background-color: #f8f8f8;
     border-color: #e7e7e7;
+}
+
+.widget-edits {
+    position: absolute;
+    right: 10px;
+    backgorund-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
 }
 
 form {
@@ -54,4 +63,24 @@ h3 {
 
 .container {
     padding: 2%;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
