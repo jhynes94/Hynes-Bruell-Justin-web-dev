@@ -49,6 +49,9 @@ h3 {
     padding-top: 18px;
     padding-right: 5%;
     padding-bottom: 3px;
+}
+
+.Check_Icon a {
     color: black;
 }
 
@@ -58,6 +61,10 @@ h3 {
     padding-top: 20px;
     padding-right: 5%;
     padding-bottom: 3px;
+    color: black;
+}
+
+.Left_Icon a {
     color: black;
 }
 
@@ -83,4 +90,20 @@ h3 {
     background: white;
     cursor: inherit;
     display: block;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
 }
