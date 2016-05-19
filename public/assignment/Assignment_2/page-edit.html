@@ -14,29 +14,30 @@
 
 <body>
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="Left_Icon"><a href="website-list.html"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
-    <h3>New Website</h3>
-    <div class="Check_Icon"><a href="website-list.html"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
+    <div class="Left_Icon"><a href="page-list.html"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <h3>Edit Page</h3>
+    <div class="Check_Icon"><a href="page-list.html"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
 </nav>
 
 
 <div class="container">
     <form method="post"
           action="/path/to/form/service">
-        <fieldset class="form-group">
-            <label for="name">Name</label>
-            <input name="name"
-                   id="name"
-                   type="text"
-                   placeholder="Name"
-                   class="form-control"/>
-        </fieldset>
 
         <fieldset class="form-group">
             <div class="form-group">
-                <label for="comment">Description</label>
-                <textarea class="form-control" rows="5" placeholder="Description" id="comment"></textarea>
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="" value="Blog Post">
             </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="title">Application Name</label>
+                <input type="text" class="form-control" id="title" placeholder="" value="Title of a post">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="page-list.html" class="btn btn-block btn-danger" role="button">Delete</a>
         </fieldset>
     </form>
 </div>
