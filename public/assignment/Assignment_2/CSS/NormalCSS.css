@@ -43,6 +43,15 @@ h3 {
     color: black;
 }
 
+.Left_Icon {
+    display:inline-block;
+    float: left;
+    padding-top: 20px;
+    padding-right: 5%;
+    padding-bottom: 3px;
+    color: black;
+}
+
 .container {
     padding: 2%;
 }
