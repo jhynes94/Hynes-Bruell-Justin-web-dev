@@ -2,16 +2,14 @@
     text-align: center;
     margin: auto;
     width: 60%;
-    border: 3px solid #73AD21;
     padding: 10px;
 }
 
 .Image {
     display: block;
     margin: 0 auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;
+    width: 90%;
+    text-align: center;
 }
 
 img {
@@ -23,10 +21,9 @@ img {
     text-align: center;
     margin: auto;
     width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;
 }
 
+
 body {
-    background-color: dimgray;
+    background-color: white;
 }
