@@ -107,3 +107,8 @@ a:hover {
 a:active {
     text-decoration: none;
 }
+
+.video {
+    width: 80%;
+    height: auto;
+}
