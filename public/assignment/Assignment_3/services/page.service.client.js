@@ -34,13 +34,11 @@
             return result;
         }
         function findPageById(pageId) {
-            var result = [];
             for(var i in pages) {
                 if(pages[i]._id === pageId) {
-                    result.push(pages[i]);
+                    return pages[i];
                 }
             }
-            return result;
         }
         function updatePage(pageId, page) {
             for(var i in pages) {

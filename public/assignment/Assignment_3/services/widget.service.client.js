@@ -14,7 +14,7 @@
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ]
 
-    function PageService() {
+    function WidgetService() {
 
         var api = {
             createWidget: createWidget,

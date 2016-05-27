@@ -11,17 +11,18 @@
 
         function init() { }
         init();
+
         function createWebsite(){
             var website = {};
-            website._id = Math.floor(Math.random()*90000) + 10000;
+            website.comment = vm.comment;
+            console.log("Comment: " + vm.comment);
             website.name = vm.name;
+            console.log("Name: " + vm.name);
             website.developerId = vm.uid;
-            //website.comment = vm.comment;
+            console.log(vm.uid);
+            website._id = Math.floor(Math.random()*90000) + 10000;
+            console.log(website._id);
             WebsiteService.createWebsite(vm.uid, website);
-            console.log(website);
-
-            var websites = WebsiteService.findWebsitesByUser(vm.uid);
-            console.log(websites);
             $location.url("/user/" + vm.uid + "/website");
         }
     }
