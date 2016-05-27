@@ -41,7 +41,7 @@
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid", {
-                templateUrl: "views/website/website-list.view.client.html",
+                templateUrl: "views/website/website-edit.view.client.html",
                 controller: "EditWebsiteController",
                 controllerAs: "model"
             })
