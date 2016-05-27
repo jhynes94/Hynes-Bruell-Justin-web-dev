@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="Left_Icon"><a href="widget-list.html"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}/widget"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
     <h3>Widget Edit</h3>
-    <div class="Check_Icon"><a href="widget-list.html"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
+    <div class="Check_Icon"><a href="update(model.widget)"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
 </nav>
 
 
@@ -10,13 +10,13 @@
         <fieldset class="form-group">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name">
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Name">
             </div>
         </fieldset>
         <fieldset class="form-group">
             <div class="form-group">
                 <label for="text">Text</label>
-                <input type="text" class="form-control" id="text" placeholder="Text">
+                <input ng-model="model.widget.text" type="text" class="form-control" id="text" placeholder="Text">
             </div>
         </fieldset>
         <fieldset class="form-group">
@@ -111,5 +111,5 @@
 </div>
 
 <footer class="footer">
-    <a href="../user/profile.html"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
 </footer>
