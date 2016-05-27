@@ -1,8 +1,10 @@
-<h1>Login</h1>
+<div class="title"><h1>Login</h1></div>
+{{model.hello}}
 <form method="post"
       action="/path/to/form/service">
     <fieldset class="form-group">
         <input name="username"
+               ng-model="username"
                id="username"
                type="text"
                placeholder="username"
@@ -10,15 +12,17 @@
     </fieldset>
     <fieldset class="form-group">
         <input name="password"
+               ng-model="password"
                id="password"
                type="password"
                placeholder="password"
                class="form-control"/>
     </fieldset>
     <fieldset class="form-group">
-        <a href="profile.html" class="btn btn-block btn-primary" role="button">Login</a>
+        <a ng-click="model.login(username, password)" class="btn btn-block btn-primary" role="button">Login</a>
     </fieldset>
     <fieldset class="form-group">
-        <a href="register.html" class="btn btn-block btn-success" role="button">Register</a>
+        <a href="#/register" class="btn btn-block btn-success" role="button">Register</a>
     </fieldset>
+    <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
 </form>
