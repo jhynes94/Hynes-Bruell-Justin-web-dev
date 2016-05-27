@@ -21,8 +21,7 @@
         return api;
 
         function createPage(websiteId, page) {
-            var newPage = { "_id": page._id, "name": page.name, "websiteId": websiteId}
-            pages.push(newPage)
+            pages.push(page)
         }
         function findPageByWebsiteId(websiteId) {
             var result = [];
