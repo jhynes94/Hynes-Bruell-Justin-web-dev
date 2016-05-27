@@ -43,7 +43,8 @@
         </tr>
 
         <tr ng-switch-when="HTML">
-            <td ng-bind-html="getTrustedHtml(widget)">
+            <td>
+                {{widget.text}}
             </td>
             <td>
                 <div class="widget-edits">

@@ -5,6 +5,8 @@
 
     function WidgetEditController($routeParams, WidgetService, $location) {
         var vm = this;
+        vm.deleteWidget = deleteWidget;
+        vm.update = update;
 
         function init() {
             vm.uid = $routeParams["uid"];
@@ -15,5 +17,15 @@
             console.log(vm.widget.widgetType);
         }
         init();
+
+        function update(widget){
+            console.log("Widget Updated");
+            $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page/" + vm.pid + "/widget");
+        }
+        function deleteWidget(widget) {
+            console.log("Widget Deleted");
+            WidgetService.deleteWidget(widget._id);
+            $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page/" + vm.pid + "/widget");
+        }
     }
 })();
