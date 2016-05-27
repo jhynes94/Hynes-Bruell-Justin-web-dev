@@ -9,57 +9,9 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <tbody>
-            <tr>
+            <tr ng-repeat="page in model.pages">
                 <td>
-                    <a href="../widget/widget-list.html">Blog Post</a>
-                </td>
-                <td>
-                    <div class=" pull-right">
-                        <a href="page-edit.html">
-                            <i class="fa fa-cog" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="../widget/widget-list.html">Blogs</a>
-                </td>
-                <td>
-                    <div class=" pull-right">
-                        <a href="page-edit.html">
-                            <i class="fa fa-cog" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="../widget/widget-list.html">Home</a>
-                </td>
-                <td>
-                    <div class=" pull-right">
-                        <a href="page-edit.html">
-                            <i class="fa fa-cog" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="../widget/widget-list.html">About</a>
-                </td>
-                <td>
-                    <div class=" pull-right">
-                        <a href="page-edit.html">
-                            <i class="fa fa-cog" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="../widget/widget-list.html">Contact Us</a>
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/page._id/widget">{{page.name}}</a>
                 </td>
                 <td>
                     <div class=" pull-right">
