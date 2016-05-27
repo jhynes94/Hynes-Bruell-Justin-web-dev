@@ -23,8 +23,7 @@
         return api;
 
         function createWebsite(userId, website) {
-            var newWebsite = [{ "_id": website._id, "name": website.name, "developerId": userId }]
-            websites.push(newWebsite)
+            websites.push(website)
         }
         function findWebsitesByUser(userId) {
             var result = [];

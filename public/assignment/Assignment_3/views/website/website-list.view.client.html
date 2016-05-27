@@ -10,7 +10,7 @@
             <tbody>
             <tr ng-repeat="website in model.websites">
                 <td>
-                    <a href="../page/page-list.html">{{website.name}}</a>
+                    <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">{{website.name}}</a>
                 </td>
                 <td>
                     <div class=" pull-right">
@@ -27,7 +27,6 @@
         </table>
     </div>
 </div>
-<h2>{{model.websites._id}}</h2>
 <footer class="footer">
     <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
 </footer>
