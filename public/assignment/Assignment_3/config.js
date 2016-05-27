@@ -66,10 +66,14 @@
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-                templateUrl: "views/page/widget-chooser.view.client.html"
+                templateUrl: "views/widget/widget-chooser.view.client.html",
+                controller: "WidgetChooserController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget/:wgit", {
-                templateUrl: "views/page/widget-edit.view.client.html"
+                templateUrl: "views/widget/widget-edit.view.client.html",
+                controller: "WidgetEditController",
+                controllerAs: "model"
             });
     }
 })();
