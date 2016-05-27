@@ -14,11 +14,27 @@
     function WebsiteService() {
 
         var api = {
-            findWebsitesForUser: findWebsitesForUser,
-            findWebsiteById: findWebsiteById
+            createWebsite: createWebsite,
+            findWebsitesByUser: findWebsitesByUser,
+            findWebsiteById: findWebsiteById,
+            updateWebsite: updateWebsite,
+            deleteWebsite: deleteWebsite
         };
         return api;
 
+        function createWebsite(userId, website) {
+            var newWebsite = [{ "_id": website._id, "name": website.name, "developerId": userId }]
+            websites.push(newWebsite)
+        }
+        function findWebsitesByUser(userId) {
+            var result = [];
+            for(var i in websites) {
+                if(websites[i].developerId === userId) {
+                    result.push(websites[i]);
+                }
+            }
+            return result;
+        }
         function findWebsiteById(websiteId) {
             for(var i in websites) {
                 if(websites[i]._id === websiteId) {
@@ -27,15 +43,19 @@
             }
             return null;
         }
-
-        function findWebsitesForUser(userId) {
-            var result = [];
+        function updateWebsite(websiteId, website) {
             for(var i in websites) {
-                if(websites[i].developerId === userId) {
-                    result.push(websites[i]);
+                if(websites[i]._id === websiteId) {
+                    websites[i] = website
                 }
             }
-            return result;
+        }
+        function deleteWebsite(websiteId) {
+            for(var i in websites) {
+                if(websites[i]._id === websiteId) {
+                    delete websites[i];
+                }
+            }
         }
     }
 })();
