@@ -10,10 +10,8 @@
             vm.uid = $routeParams["uid"];
             vm.wid = $routeParams["wid"];
             vm.pid = $routeParams["pid"];
-            vm.wid = $routeParams["wid"];
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pid);
-            console.log(vm.widgets);
-            vm.widget = WidgetService.findWidgetById(vm.wid);
+            vm.wgit = $routeParams["wgit"];
+            vm.widget = WidgetService.findWidgetById(vm.wgit);
             console.log(vm.widget.widgetType);
         }
         init();

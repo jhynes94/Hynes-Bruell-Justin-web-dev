@@ -5,7 +5,7 @@
 </nav>
 
 
-<div class="container" ng-switch="model.widget.widgetType">
+<div class="container" ng-switch on="model.widget.widgetType">
     <form method="post" action="/path/to/form/service" ng-switch-when="HEADER">
         <fieldset class="form-group">
             <div class="form-group">
@@ -29,6 +29,79 @@
                     <option>4</option>
                     <option>5</option>
                 </select>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="widget-list.html" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+    </form>
+    <form method="post " action="/path/to/form/service" ng-switch-when="IMAGE">
+
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="size">URL</label>
+                <input type="text" class="form-control" id="size" placeholder="URL" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="width">Width</label>
+                <input type="text" class="form-control" id="width" placeholder="Width" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Browse… <input type="file" multiple="">
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="widget-list.html" class="btn btn-block btn-primary" role="button">Upload</a>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="widget-list.html" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+        <p></p>
+    </form>
+    <form method="post" action="/path/to/form/service" ng-switch-when="YOUTUBE">
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" class="form-control" id="url" placeholder="URL" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="width">Width</label>
+                <input type="text" class="form-control" id="width" placeholder="Width" value="">
             </div>
         </fieldset>
         <fieldset class="form-group">
