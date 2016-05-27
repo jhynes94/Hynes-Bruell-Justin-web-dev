@@ -8,14 +8,9 @@
 
         function init() {
             var userId = $routeParams.userId;
-            vm.websites = WebsiteService.findWebsitesForUser(userId);
+            vm.websites = WebsiteService.findWebsiteById(userId);
         }
         init();
         vm.userID = $routeParams.userId;
-
-
-        function gotoProfile() {
-            $location.url("/profile/" + vm.user._id);
-        }
     }
 })();

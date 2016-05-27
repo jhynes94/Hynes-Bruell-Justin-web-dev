@@ -22,7 +22,6 @@
                 id="username"
                 type="text"
                 placeholder="username"
-                value="jbruell94"
                 class="form-control"/>
     </fieldset>
     <fieldset class="form-group">
@@ -33,7 +32,6 @@
                 id="email"
                 type="email"
                 placeholder="email"
-                value="jbruell94@gmail.com"
                 class="form-control"/>
     </fieldset>
     <fieldset class="form-group">
@@ -44,7 +42,6 @@
                id="firstName"
                type="text"
                placeholder="First Name"
-               value="Justin"
                class="form-control"/>
     </fieldset>
     <fieldset class="form-group">
@@ -54,7 +51,6 @@
                id="lastName"
                type="text"
                placeholder="Last Name"
-               value="Hynes-Bruell"
                class="form-control"/>
     </fieldset>
     <fieldset class="form-group">
@@ -65,6 +61,8 @@
     </fieldset>
 </form>
 
+<h2>{{model.user}}</h2>
+
 <footer class="footer">
-    <a href="#/profile/{{model.user._id}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+    <a href="#/user/{{model.user._id}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
 </footer>
