@@ -5,10 +5,8 @@
 </nav>
 
 
-<div class="container">
-    <form method="post"
-          action="/path/to/form/service">
-
+<div class="container" ng-switch="model.widget.widgetType">
+    <form method="post" action="/path/to/form/service" ng-switch-when="HEADER">
         <fieldset class="form-group">
             <div class="form-group">
                 <label for="name">Name</label>

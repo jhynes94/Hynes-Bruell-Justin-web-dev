@@ -38,13 +38,11 @@
             return result;
         }
         function findWidgetById(widgetId) {
-            var result = [];
             for(var i in widgets) {
                 if(widgets[i]._id === widgetId) {
-                    result.push(widgets[i]);
+                    return widgets[i];
                 }
             }
-            return result;
         }
         function updateWidget(widgetId, widget) {
             for(var i in widgets) {
