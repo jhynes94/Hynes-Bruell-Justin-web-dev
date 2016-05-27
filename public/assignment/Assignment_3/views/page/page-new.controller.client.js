@@ -15,7 +15,7 @@
 
         function createPage(){
             var page = {};
-            page._id = Math.floor(Math.random()*90000) + 10000;
+            page._id = (Math.floor(Math.random()*90000) + 10000).toString();
             page.name = vm.name;
             page.title = vm.title;
             page.websiteId = vm.websiteId;

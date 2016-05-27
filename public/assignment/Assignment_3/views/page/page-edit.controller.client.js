@@ -34,15 +34,5 @@
             PageService.deletePage(vm.pageId);
             $location.url("/user/" + vm.uid + "/website/"  + vm.websiteId + "/page");
         }
-
-        // function createPage(){
-        //     var website = [];
-        //     website.comment = vm.comment
-        //     website.name = vm.name;
-        //     website.developerId = vm.uid;
-        //     website._id = Math.floor(Math.random()*90000) + 10000;
-        //     WebsiteService.createWebsite(vm.uid, website)
-        //     $location.url("/user/" + vm.uid + "/website");
-        // }
     }
 })();
