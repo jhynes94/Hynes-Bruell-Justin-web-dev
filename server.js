@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+var assignment = require('./assignment/app.js');
+assignment(app);
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
