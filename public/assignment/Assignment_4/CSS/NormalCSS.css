@@ -1,0 +1,130 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background-color: #f5f5f5;
+    text-align: right;
+    padding: 10px;
+    padding-right: 5%;
+    border-width: 0 0 1px;
+    border: 1px solid transparent;
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+}
+
+.widget-edits {
+    position: absolute;
+    right: 10px;
+    backgorund-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+}
+
+form {
+    padding: 5%;
+}
+
+td {
+    background-color: white;
+}
+
+
+.navbar-static-top {
+    height: auto;
+    color: dimgray;
+    padding-left: 5%;
+    padding-top: 7px;
+    padding-bottom: 3px;
+}
+
+h3 {
+    display:inline-block;
+}
+
+.Check_Icon {
+    display:inline-block;
+    float: right;
+    padding-top: 18px;
+    padding-right: 5%;
+    padding-bottom: 3px;
+}
+
+.Check_Icon a {
+    color: black;
+}
+
+.Left_Icon {
+    display:inline-block;
+    float: left;
+    padding-top: 20px;
+    padding-right: 5%;
+    padding-bottom: 3px;
+    color: black;
+}
+
+.Left_Icon a {
+    color: black;
+}
+
+.container {
+    padding: 2%;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.video-container {
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.title {
+    padding-left: 5%;
+    padding-top: 5%;
+}

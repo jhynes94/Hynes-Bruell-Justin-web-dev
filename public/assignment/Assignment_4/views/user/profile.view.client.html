@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <h3>Profile</h3>
+    <div class="Check_Icon">
+        <a ng-click="model.updateUser()" class="navbar-link"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+    </div>
+</nav>
+
+<div ng-show="model.success" class="alert alert-success">
+    {{model.success}}
+</div>
+
+<div ng-show="model.error" class="alert alert-danger">
+    {{model.error}}
+</div>
+
+<form>
+    <fieldset class="form-group">
+        <label for="username">Username</label>
+        <input
+                ng-model="model.user.username"
+                name="username"
+                id="username"
+                type="text"
+                placeholder="username"
+                class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="email">Email</label>
+        <input
+                ng-model="model.user.email"
+                name="email"
+                id="email"
+                type="email"
+                placeholder="email"
+                class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+               ng-model="model.user.firstName"
+               name="firstName"
+               id="firstName"
+               type="text"
+               placeholder="First Name"
+               class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="lastName">Last Name</label>
+        <input name="lastName"
+               ng-model="model.user.lastName"
+               id="lastName"
+               type="text"
+               placeholder="Last Name"
+               class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <a href="#/user/{{model.user._id}}/website" class="btn btn-block btn-primary" role="button">Applications</a>
+    </fieldset>
+    <fieldset class="form-group">
+        <a href="#/login" class="btn btn-block btn-danger" role="button">Logout</a>
+    </fieldset>
+</form>
+<footer class="footer">
+    <a href="#/user/{{model.user._id}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>

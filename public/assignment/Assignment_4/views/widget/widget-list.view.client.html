@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website/{{model.wid}}/page"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <h3>Widgets</h3>
+    <div class="Check_Icon"><a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+
+<div class="container">
+    <table class="table table-striped">
+        <tbody ng-repeat="widget in model.widgets" ng-switch on="widget.widgetType">
+        <tr ng-switch-when="HEADER">
+            <td ng-switch="widget.size">
+                <h1 ng-switch-when="1">{{widget.text}}</h1>
+                <h2 ng-switch-when="2">{{widget.text}}</h2>
+                <h3 ng-switch-when="3">{{widget.text}}</h3>
+                <h4 ng-switch-when="4">{{widget.text}}</h4>
+                <h5 ng-switch-when="5">{{widget.text}}</h5>
+                <h6 ng-switch-when="6">{{widget.text}}</h6>
+            </td>
+            <td>
+                <div class="widget-edits">
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </a>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
+        <tr ng-switch-when="IMAGE">
+            <td>
+                <img border="0" ng-src="{{widget.url}}" width="80%" height="auto">
+            </td>
+            <td>
+                <div class="widget-edits">
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </a>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
+
+        <tr ng-switch-when="HTML">
+            <td ng-bind-html="model.getTrustedHtml(widget)">
+            </td>
+            <td>
+                <div class="widget-edits">
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </a>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
+        <tr ng-switch-when="YOUTUBE">
+            <div class="video">
+                <td height="auto">
+                    <div class="video-container"><iframe width="80%" height="auto" ng-src="{{model.getTrustedUrl(widget)}}" frameborder="0" allowfullscreen></iframe></div>
+                </td>
+            </div>
+            <td>
+                <div class="widget-edits">
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </a>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<p></p>
+<footer class="footer">
+    <div class=" pull-left">
+        <i class="fa fa-play fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+    </div>
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>

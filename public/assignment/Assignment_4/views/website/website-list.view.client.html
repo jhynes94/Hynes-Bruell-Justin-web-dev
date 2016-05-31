@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <h3>Websites</h3>
+    <div class="Check_Icon"><a href="#/user/{{model.uid}}/website/new"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tbody>
+            <tr ng-repeat="website in model.websites">
+                <td>
+                    <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">{{website.name}}</a>
+                </td>
+                <td>
+                    <div class=" pull-right">
+                        <a href="#/user/{{website.developerId}}/website/{{website._id}}">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </a>
+                        <a href="#/user/{{website.developerId}}/website/{{website._id}}">
+                            <i class="fa fa-play" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer class="footer">
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>
