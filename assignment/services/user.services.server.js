@@ -9,21 +9,26 @@ module.exports = function (app) {
 
     //Call and Responce Basic
     app.get("/api/user", getUsers);
-
     app.get("/api/user/:userId", findUserById);
+    //app.put("/api/user/:userId", updateUser);
+
+    function updateUser(req, res) {
+        //var id = req.params.userId;
+
+    }
+
 
     function getUsers(req, res) {
         var username = req.query["username"];
         var password = req.query["password"];
-        console.log(username);
-        console.log(password);
+        console.log("REQUEST: Usr: " + username + " Psw: " + password);
         if(username && password) {
             //find user by creds
             findUserByCredentials(username, password, res);
         }
         else if (username){
             for(var i in users){
-                if(users[i]._id === username){
+                if(users[i].username === username){
                     res.send(users[i]);
                 }
             }
@@ -37,8 +42,11 @@ module.exports = function (app) {
         for(var i in users){
             if(users[i].username === username && users[i].password === password){
                 res.send(users[i]);
+                console.log("User: " + users[i]);
+                return;
             }
         }
+        res.send(404);
     }
 
 
@@ -48,17 +56,9 @@ module.exports = function (app) {
         for(var i in users){
             if(users[i]._id === userId){
                 res.send(users[i]);
+                return;
             }
         }
+        res.send(404);
     }
-
-    //Get Specific User
-    app.get("/allUsers/:username", function(req, res) {
-        var username = req.params["username"];
-        for(var i in users){
-            if(users[i].username === username){
-                res.send(users[i]);
-            }
-        }
-    });
 };
