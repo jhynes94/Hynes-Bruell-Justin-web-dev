@@ -16,6 +16,7 @@
         };
         return api;
 
+        
         function updateUser(id, newUser) {
             for (var i in users) {
                 if (users[i]._id === id) {
@@ -26,10 +27,12 @@
             return false;
         }
 
+        //TODO Update
         function createUser(user) {
             users.push(user);
         }
 
+        //TODO Update
         function deleteUser(id) {
             for (var i in users) {
                 if (users[i]._id === id) {
@@ -37,7 +40,8 @@
                 }
             }
         }
-
+    
+        //TODO Update this
         function findUserByUsername(username) {
             for (var i in users) {
                 if (users[i].username === username) {
