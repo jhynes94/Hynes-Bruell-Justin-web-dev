@@ -15,7 +15,8 @@ module.exports = function (app) {
     app.delete("/api/user/:userId", deleteUser);
 
     function createUser(req, res) {
-        var newUser = req.body;
+        var bananan =  req;
+        var newUser = req.data;
 
         for(var i in users) {
             if(users[i].username === newUser.username) {
@@ -42,12 +43,11 @@ module.exports = function (app) {
     }
 
     function updateUser(req, res) {
-        var id = req.params.userId;
         var newUser = req.body;
+        var id = newUser._id;
         for(var i in users) {
             if(users[i]._id === id) {
-                users[i].firstName = newUser.firstName;
-                users[i].lastName = newUser.lastName;
+                users[i]  = newUser;
                 res.send(200);
                 return;
             }
