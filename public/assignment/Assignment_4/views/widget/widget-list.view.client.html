@@ -6,9 +6,8 @@
 </nav>
 
 
-
 <div class="container">
-    <table class="table table-striped">
+    <table id="sortable" class="table table-striped">
         <tbody ng-repeat="widget in model.widgets" ng-switch on="widget.widgetType">
         <tr ng-switch-when="HEADER">
             <td ng-switch="widget.size">

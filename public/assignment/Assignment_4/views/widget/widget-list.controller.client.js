@@ -14,6 +14,9 @@
             vm.pid = $routeParams["pid"];
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pid);
             console.log(vm.widgets);
+
+            $( "#sortable" ).sortable({ axis: 'y', handle: '.fa-bars'});
+            $( "#sortable" ).disableSelection();
         }
         init();
 
