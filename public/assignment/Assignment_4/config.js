@@ -74,6 +74,9 @@
                 templateUrl: "views/widget/widget-edit.view.client.html",
                 controller: "WidgetEditController",
                 controllerAs: "model"
+            })
+            .otherwise({
+                redirectTo: "/login"
             });
     }
 })();

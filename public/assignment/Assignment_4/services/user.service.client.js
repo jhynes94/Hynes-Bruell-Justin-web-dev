@@ -23,8 +23,7 @@
         }
 
         function createUser(user) {
-            //console.log(user);
-            var data = {_id: "235", username: "justin", password: "justin", firstName: "justin", lastName: "justin"  };
+            var data = {username: user.username, password: user.password};
             var url = "/api/user";
             return $http.post(url, data);
         }

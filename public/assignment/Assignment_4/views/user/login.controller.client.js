@@ -28,9 +28,13 @@
                 vm.error = "Non-Matching Passwords";
                 return null;
             }
-            var newUser = {_id: "444", username: username, password: password}
-            UserService.createUser(newUser);
-            $location.url("/user/" + newUser._id);
+            var newUser = {username: username, password: password};
+            UserService.createUser(newUser)
+                .then(function () {
+                    $location.url("/user/" + UserService.findUserByCredentials(username, password)._id);
+                }, function (error) {
+                    vm.error = "User Not Created, Error: " + error;
+                })
         }
     }
 })();

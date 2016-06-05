@@ -15,7 +15,7 @@ module.exports = function (app) {
     app.delete("/api/user/:userId", deleteUser);
 
     function createUser(req, res) {
-        var bananan =  req;
+        console.log(req.data);
         var newUser = req.data;
 
         for(var i in users) {
