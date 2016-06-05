@@ -22,8 +22,10 @@
             console.log(vm.uid);
             website._id = (Math.floor(Math.random()*90000) + 10000).toString();
             console.log(website._id);
-            WebsiteService.createWebsite(vm.uid, website);
-            $location.url("/user/" + vm.uid + "/website");
+            WebsiteService.createWebsite(vm.uid, website)
+                .then(function(response) {
+                    $location.url("/user/" + vm.uid + "/website");
+                });
         }
     }
 })();

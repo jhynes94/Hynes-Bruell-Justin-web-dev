@@ -29,8 +29,10 @@
         }
 
         function deleteAccount() {
-            UserService.deleteUser(vm.user._id);
-            $location.url("/login");
+            UserService.deleteUser(vm.user._id)
+                .then(function(response) {
+                    $location.url("/login");
+                });
         }
     }
 })();

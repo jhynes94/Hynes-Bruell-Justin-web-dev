@@ -28,13 +28,17 @@
         function updateWebsite() {
             vm.website.name = vm.name;
             vm.website.comment = vm.comment;
-            WebsiteService.updateWebsite(vm.websiteId, vm.website);
-            $location.url("/user/" + vm.uid + "/website");
+            WebsiteService.updateWebsite(vm.websiteId, vm.website)
+                .then(function(response) {
+                    $location.url("/user/" + vm.uid + "/website");
+                });
         }
 
         function deleteWebsite(){
-            WebsiteService.deleteWebsite(vm.websiteId);
-            $location.url("/user/" + vm.uid + "/website");
+            WebsiteService.deleteWebsite(vm.websiteId)
+                .then(function(response) {
+                    $location.url("/user/" + vm.uid + "/website");
+                });
         }
     }
 })();
