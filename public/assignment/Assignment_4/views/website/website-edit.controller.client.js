@@ -14,16 +14,21 @@
             console.log(vm.uid);
             console.log(vm.websiteId);
             console.log(WebsiteService.findWebsitesByUser(vm.uid));
-            vm.name = WebsiteService.findWebsiteById(vm.websiteId).name;
-            vm.comment = WebsiteService.findWebsiteById(vm.websiteId).comment;
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .then(function(response) {
+                    console.log(response.data);
+                    vm.website = response.data;
+                    vm.name = vm.website.name;
+                    vm.comment = vm.website.comment;
+                });
         }
         init();
 
         function updateWebsite() {
-            var website = WebsiteService.findWebsiteById(vm.websiteId);
-            website.name = vm.name;
-            website.comment = vm.comment;
-            WebsiteService.updateWebsite(vm.websiteId, website)
+            vm.website.name = vm.name;
+            vm.website.comment = vm.comment;
+            WebsiteService.updateWebsite(vm.websiteId, vm.website);
             $location.url("/user/" + vm.uid + "/website");
         }
 

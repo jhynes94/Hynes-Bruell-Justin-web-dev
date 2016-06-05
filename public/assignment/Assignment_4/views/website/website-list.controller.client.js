@@ -9,7 +9,13 @@
         function init() {
             vm.uid = $routeParams["uid"];
             var userId = $routeParams["uid"];
-            vm.websites = WebsiteService.findWebsitesByUser(userId);
+            
+            WebsiteService
+                .findWebsitesByUser(vm.uid)
+                .then(function(response) {
+                    console.log(response.data);
+                    vm.websites = response.data;
+                });
         }
         init();
     }

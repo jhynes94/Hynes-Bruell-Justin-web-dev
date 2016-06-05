@@ -1,6 +1,7 @@
 module.exports = function(app) {
     
     var userService = require("./services/user.services.server")(app);
+    var websiteService = require("./services/website.services.server")(app);
 
 
     //Call and Responce Basic
