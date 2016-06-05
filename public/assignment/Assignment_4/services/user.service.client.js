@@ -24,13 +24,13 @@
 
         function createUser(user) {
             //var data = {username: user.username, password: user.password};
-            var data = {username: "asd", password: "asd"};
             var url = "/api/user";
-            return $http.post(url, data);
+            return $http.post(url, user);
         }
         
         function deleteUser(id) {
             var url = "/api/user/"+id;
+            console.log("Delete Account:" + id);
             return $http.delete(url);
         }
     
