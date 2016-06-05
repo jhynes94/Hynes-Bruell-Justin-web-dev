@@ -15,19 +15,26 @@
                 console.log(vm.uid);
                 console.log(vm.websiteId);
                 console.log(vm.pageId);
-                console.log(PageService.findPageById(vm.pageId));
-            vm.name = PageService.findPageById(vm.pageId).name;
-            vm.title = PageService.findPageById(vm.pageId).title;
+                //console.log(PageService.findPageById(vm.pageId));
+                PageService
+                    .findPageById(vm.pageId)
+                    .then(function(response) {
+                        console.log(response.data);
+                        vm.page = response.data;
+                        vm.name = vm.page.name;
+                        vm.title = vm.page.title;
+                    });
         }
         init();
 
         function updatePage() {
             console.log(vm.pageId);
-            var page = PageService.findPageById(vm.pageId);
-            page.name = vm.name;
-            page.title = vm.title;
-            PageService.updatePage(vm.pageId, page);
-            $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page");
+            vm.page.name = vm.name;
+            vm.page.title = vm.title;
+            PageService.updatePage(vm.pageId, vm.page)
+                .then(function(response) {
+                    $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page");
+                });
         }
 
         function deletePage(){

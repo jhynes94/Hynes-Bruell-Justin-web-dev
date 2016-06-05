@@ -1,14 +1,8 @@
 (function() {
     angular.module("WebAppMaker")
         .factory("PageService", PageService);
-
-    var pages = [
-        { "_id": "321", "name": "Post 1", "websiteId": "456" },
-        { "_id": "432", "name": "Post 2", "websiteId": "456" },
-        { "_id": "543", "name": "Post 3", "websiteId": "456" }
-    ]
     
-    function PageService() {
+    function PageService($http) {
 
         var api = {
             createPage: createPage,
@@ -20,38 +14,31 @@
         };
         return api;
 
+        //TODO
         function createPage(websiteId, page) {
-            pages.push(page)
+            var url = "/api/website/" + websiteId + "/page/";
+            return $http.post(url, page);
         }
+        //TODO
         function findPageByWebsiteId(websiteId) {
-            var result = [];
-            for(var i in pages) {
-                if(pages[i].websiteId === websiteId) {
-                    result.push(pages[i]);
-                }
-            }
-            return result;
+            var url = "/api/website/" + websiteId + "/page/";
+            return $http.get(url);
         }
+
+        //TODO
         function findPageById(pageId) {
-            for(var i in pages) {
-                if(pages[i]._id === pageId) {
-                    return pages[i];
-                }
-            }
+            var url = "/api/page/" + pageId;
+            return $http.get(url);
         }
+        //TODO
         function updatePage(pageId, page) {
-            for(var i in pages) {
-                if(pages[i]._id === pageId) {
-                    pages[i] = page;
-                }
-            }
+            var url = "/api/page/" + pageId;
+            return $http.put(url, page);
         }
+        //TODO
         function deletePage(pageId) {
-            for(var i in pages) {
-                if(pages[i]._id === pageId) {
-                    delete pages[i];
-                }
-            }
+            var url = "/api/page/" + pageId;
+            return $http.delete(url);
         }
     }
 })();

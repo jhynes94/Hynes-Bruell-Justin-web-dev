@@ -18,10 +18,11 @@
             page._id = (Math.floor(Math.random()*90000) + 10000).toString();
             page.name = vm.name;
             page.title = vm.title;
-            console.log("TITLE! " + vm.title);
             page.websiteId = vm.websiteId;
             PageService.createPage(vm.websiteId, page)
-            $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page");
+                .then(function(response) {
+                    $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page");
+                });
         }
     }
 })();
