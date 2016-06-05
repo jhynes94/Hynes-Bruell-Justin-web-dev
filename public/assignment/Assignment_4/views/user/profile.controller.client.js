@@ -20,12 +20,12 @@
         init();
 
         function updateUser() {
-            var result = UserService.updateUser(vm.user._id, vm.user);
-            if(result === true) {
-                vm.success = "User successfully updated";
-            } else {
-                vm.error = "User not found";
-            }
+            UserService.updateUser(vm.user._id, vm.user)
+                .then(function (response) {
+                    vm.success = "User successfully updated";
+                }, function (error) {
+                    vm.error = "User not found";
+                });
         }
 
         function deleteAccount() {

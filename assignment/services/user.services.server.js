@@ -46,7 +46,7 @@ module.exports = function (app) {
         var id = newUser._id;
         for(var i in users) {
             if(users[i]._id === id) {
-                users[i]  = newUser;
+                users[i] = newUser;
                 res.send(200);
                 return;
             }
