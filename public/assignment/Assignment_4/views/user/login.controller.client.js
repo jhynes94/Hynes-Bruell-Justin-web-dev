@@ -30,7 +30,7 @@
             }
             var newUser = {username: username, password: password};
             UserService.createUser(newUser)
-                .then(function () {
+                .then(function (response) {
                     $location.url("/user/" + UserService.findUserByCredentials(username, password)._id);
                 }, function (error) {
                     vm.error = "User Not Created, Error: " + error;

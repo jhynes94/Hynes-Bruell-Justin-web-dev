@@ -15,8 +15,7 @@ module.exports = function (app) {
     app.delete("/api/user/:userId", deleteUser);
 
     function createUser(req, res) {
-        console.log(req.data);
-        var newUser = req.data;
+        var newUser = req.body;
 
         for(var i in users) {
             if(users[i].username === newUser.username) {
@@ -31,7 +30,7 @@ module.exports = function (app) {
     }
 
     function deleteUser(req, res) {
-        var id = req.params.userId;
+        var id = req.params["userId"];
         for(var i in users) {
             if(users[i]._id === id) {
                 users.splice(i, 1);
