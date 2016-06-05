@@ -12,7 +12,12 @@
             vm.uid = $routeParams["uid"];
             vm.wid = $routeParams["wid"];
             vm.pid = $routeParams["pid"];
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pid);
+            WidgetService
+                .findWidgetsByPageId(vm.pid)
+                .then(function(response) {
+                    console.log(response.data);
+                    vm.widgets = response.data;
+                });
             console.log(vm.widgets);
 
             $( "#sortable" ).sortable({ axis: 'y', handle: '.fa-bars'}).disableSelection();

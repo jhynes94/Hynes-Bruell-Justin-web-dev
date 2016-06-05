@@ -22,8 +22,7 @@
             header._id = (Math.floor(Math.random()*90000) + 10000).toString();
             header.widgetType = "HEADER";
             header.pageId = vm.pid;
-            WidgetService.createWidget(header._id, header);
-            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + header._id);
+            internalCreateWidget(header);
         }
         function newYoutube(){
             console.log("New Youtube Link!");
@@ -31,8 +30,7 @@
             header._id = (Math.floor(Math.random()*90000) + 10000).toString();
             header.widgetType = "YOUTUBE";
             header.pageId = vm.pid;
-            WidgetService.createWidget(header._id, header);
-            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + header._id);
+            internalCreateWidget(header);
         }
         function newImage(){
             console.log("New Image!");
@@ -40,8 +38,17 @@
             header._id = (Math.floor(Math.random()*90000) + 10000).toString();
             header.widgetType = "IMAGE";
             header.pageId = vm.pid;
-            WidgetService.createWidget(header._id, header);
-            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + header._id);
+            internalCreateWidget(header);
+        }
+        
+        function internalCreateWidget(header) {
+            console.log(header);
+            WidgetService
+                .createWidget(header.pageId, header)
+                .then(function(response) {
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + header._id);
+                });
+                
         }
     }
 })();
