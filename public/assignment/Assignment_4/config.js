@@ -75,6 +75,11 @@
                 controller: "WidgetEditController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgit/flickr", {
+                templateUrl: "views/widget/widget-flickr-search.view.client.html",
+                controller: "FlickrImageSearchController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/login"
             });
