@@ -35,8 +35,7 @@
             <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
         </fieldset>
     </form>
-    <form method="post " action="/path/to/form/service" ng-switch-when="IMAGE">
-
+    <form action="/api/upload"  method="post" enctype="multipart/form-data" ng-switch-when="IMAGE">
         <fieldset class="form-group">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -62,22 +61,12 @@
             </div>
         </fieldset>
         <fieldset class="form-group">
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <span class="btn btn-primary btn-file">
-                        Browse… <input type="file" multiple="">
-                    </span>
-                </span>
-                <input type="text" class="form-control" readonly="">
-            </div>
-        </fieldset>
-        <fieldset class="form-group">
-            <a href="widget-list.html" class="btn btn-block btn-primary" role="button">Upload</a>
+            <input  name="myFile"   type="file" class="form-control"/>
+            <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
         </fieldset>
         <fieldset class="form-group">
             <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
         </fieldset>
-        <p></p>
     </form>
     <form method="post" action="/path/to/form/service" ng-switch-when="YOUTUBE">
         <fieldset class="form-group">
