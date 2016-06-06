@@ -27,7 +27,7 @@
             WidgetService
                 .updateWidget(vm.wgit, widget)
                 .then(function(response) {
-                    $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page/" + vm.pid + "/widget");
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
                 });
         }
         function deleteWidget(widget) {
@@ -35,7 +35,7 @@
             WidgetService
                 .deleteWidget(widget._id)
                 .then(function(response) {
-                    $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page/" + vm.pid + "/widget");
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
                 });
         }
     }
