@@ -21,6 +21,7 @@
             var header = {};
             header._id = (Math.floor(Math.random()*90000) + 10000).toString();
             header.widgetType = "HEADER";
+            header.size = "1";
             header.pageId = vm.pid;
             internalCreateWidget(header);
         }
@@ -37,6 +38,7 @@
             var header = {};
             header._id = (Math.floor(Math.random()*90000) + 10000).toString();
             header.widgetType = "IMAGE";
+            header.width = "100%";
             header.pageId = vm.pid;
             internalCreateWidget(header);
         }

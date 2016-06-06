@@ -26,9 +26,6 @@ form {
     padding: 3%;
 }
 
-td {
-    background-color: white;
-}
 
 
 .navbar-static-top {
@@ -127,4 +124,12 @@ a:active {
 .title {
     padding-left: 5%;
     padding-top: 5%;
+}
+
+td {
+    background-color: white;
+}
+
+tr {
+    min-height: 100px;
 }
