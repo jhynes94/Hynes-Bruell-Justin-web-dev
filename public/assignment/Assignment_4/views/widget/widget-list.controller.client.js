@@ -19,8 +19,8 @@
                     vm.widgets = response.data;
                 });
             console.log(vm.widgets);
-
-            $( "#sortable" ).sortable({ axis: 'y', handle: '.fa-bars'}).disableSelection();
+            
+            $( "#sortable" ).sortable({ axis: 'y', handle: '.fa-bars', placeholder: "ui-state-highlight"}).disableSelection();
         }
         init();
 

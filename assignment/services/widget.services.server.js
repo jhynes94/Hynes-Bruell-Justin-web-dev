@@ -12,6 +12,8 @@ module.exports = function (app) {
         { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
         { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
             "url": "https://youtu.be/AM2Ivdi9c4E" },
+        { "_id": "1235", "widgetType": "IMAGE", "pageId": "321", "width": "80%",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Mount_Washington_chained_building.jpg"},
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
 

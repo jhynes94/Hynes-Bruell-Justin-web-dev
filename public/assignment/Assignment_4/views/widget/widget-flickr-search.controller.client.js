@@ -41,7 +41,7 @@
                 .updateWidget(vm.widget.wgit, vm.widget)
                 .then(function (response) {
                         console.log(response);
-                        $location.url("/user/" + vm.uid + "/website/" + vm.websiteId + "/page/" + vm.pid + "/widget");
+                        $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
                     }
                 );
         }
