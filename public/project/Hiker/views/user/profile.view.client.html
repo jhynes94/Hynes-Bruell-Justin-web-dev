@@ -35,26 +35,17 @@
                 class="form-control"/>
     </fieldset>
     <fieldset class="form-group">
-        <label for="firstName">First Name</label>
+        <label for="firstName">Name</label>
         <input
-               ng-model="model.user.firstName"
+               ng-model="model.user.Name"
                name="firstName"
                id="firstName"
                type="text"
-               placeholder="First Name"
+               placeholder="Name"
                class="form-control"/>
     </fieldset>
     <fieldset class="form-group">
-        <label for="lastName">Last Name</label>
-        <input name="lastName"
-               ng-model="model.user.lastName"
-               id="lastName"
-               type="text"
-               placeholder="Last Name"
-               class="form-control"/>
-    </fieldset>
-    <fieldset class="form-group">
-        <a href="#/user/{{model.user._id}}/website" class="btn btn-block btn-primary" role="button">Applications</a>
+        <a href="#/user/{{model.user._id}}/blog" class="btn btn-block btn-primary" role="button">Blog</a>
     </fieldset>
     <fieldset class="form-group">
         <a href="#/login" class="btn btn-block btn-danger" role="button">Logout</a>
@@ -63,6 +54,7 @@
         <a ng-click="model.deleteAccount()" class="btn btn-block btn-danger" role="button">Delete Account</a>
     </fieldset>
 </form>
+<h1></h1>
 <footer class="footer">
     <a href="#/user/{{model.user._id}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
 </footer>

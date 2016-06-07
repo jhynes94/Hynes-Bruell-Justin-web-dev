@@ -25,6 +25,26 @@
                 controller: "LoginController",
                 controllerAs: "model"
             })
+            .when("/user/:uid", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/blog", {
+                templateUrl: "views/blog/blog-list.view.client.html",
+                controller: "BlogListController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/hikes", {
+                templateUrl: "views/mountains/hikes.view.client.html",
+                controller: "HikesController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/weather", {
+                templateUrl: "views/weather/weather.view.client.html",
+                controller: "WeatherController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/login"
             });
