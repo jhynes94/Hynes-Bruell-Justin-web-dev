@@ -1,0 +1,36 @@
+
+<div class="title"><h1>Register</h1></div>
+    <form method="post"
+          action="/path/to/form/service">
+        <fieldset class="form-group">
+            <input name="username"
+                   ng-model="username"
+                   id="username"
+                   type="text"
+                   placeholder="username"
+                   class="form-control"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <input name="password"
+                   ng-model="password"
+                   id="password"
+                   type="password"
+                   placeholder="password"
+                   class="form-control"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <input name="passwordVerify"
+                   ng-model="passwordVerify"
+                   id="passwordVerify"
+                   type="password"
+                   placeholder="verify password"
+                   class="form-control"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <a ng-click="model.createNewUser(username, password, passwordVerify)" class="btn btn-block btn-primary">Register</a>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="#/login" class="btn btn-block btn-danger" role="button">Cancel</a>
+        </fieldset>
+        <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
+    </form>
