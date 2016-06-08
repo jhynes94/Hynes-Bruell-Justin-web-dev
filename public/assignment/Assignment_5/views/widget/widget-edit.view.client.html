@@ -1,0 +1,111 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <h3>Widget Edit</h3>
+    <div class="Check_Icon"><a ng-click="model.update(model.widget)"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+<div class="container" ng-switch on="model.widget.widgetType">
+    <form method="post" action="/path/to/form/service" ng-switch-when="HEADER">
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input ng-model="model.widget.text" type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="sel1">Size</label>
+                <select ng-model="model.widget.size" class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+    </form>
+    <form action="/api/upload"  method="post" enctype="multipart/form-data" ng-switch-when="IMAGE">
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input ng-model="model.widget.text" type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="size">URL</label>
+                <input ng-model="model.widget.url" type="text" class="form-control" id="size" placeholder="URL" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="width">Width</label>
+                <input ng-model="model.widget.width" type="us-percent" class="form-control" id="width" placeholder="Width" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{model.wgit}}/flickr" class="btn btn-block btn-primary" role="button">Flickr</a>
+        </fieldset>
+        <fieldset class="form-group">
+            <input  name="myFile"   type="file" class="form-control"/>
+            <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+        </fieldset>
+        <fieldset class="form-group">
+            <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+        <fieldset class="form-group">
+        </fieldset>
+        <fieldset class="form-group">
+        </fieldset>
+    </form>
+    <form method="post" action="/path/to/form/service" ng-switch-when="YOUTUBE">
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input ng-model="model.widget.text" type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input ng-model="model.widget.url" type="text" class="form-control" id="url" placeholder="URL" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="width">Width</label>
+                <input ng-model="model.widget.width" type="us-percent" class="form-control" id="width" placeholder="Width" value="">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+    </form>
+</div>
+
+<footer class="footer">
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website/"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <h3>Pages</h3>
+    <div class="Check_Icon"><a href="#/user/{{model.uid}}/website/{{model.wid}}/page/new"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tbody>
+            <tr ng-repeat="page in model.pages">
+                <td>
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}/widget">{{page.name}}</a>
+                </td>
+                <td>
+                    <div class=" pull-right">
+                        <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer class="footer">
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>
