@@ -3,14 +3,26 @@ var mongoose = require("mongoose");
 module.exports = function() {
 
     var WidgetSchema = mongoose.Schema({
-        _page: String,
+        _page: { type: mongoose.Schema.Types.ObjectId, ref: 'Page' },
+        //TODO Change Type to be Enum
+        type: String,
         name: String,
-        title: String,
+        text: String,
+        placeholder: String,
         description: String,
-        widgets: [],
+        url: String,
+        width: String,
+        height: String,
+        rows: Number,
+        //TODO Change Size to number
+        size: String,
+        class: String,
+        icon: String,
+        deletable: Boolean,
+        formatted: Boolean,
         dateCreated : {type : Date, default: Date.now},
         dateUpdated: Date
-    }, {collection: "assignment.page"});
+    }, {collection: "assignment.widgets"});
 
     return WidgetSchema;
 };
