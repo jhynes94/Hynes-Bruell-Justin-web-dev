@@ -27,7 +27,7 @@
 
         function updateWebsite() {
             vm.website.name = vm.name;
-            vm.website.comment = vm.comment;
+            vm.website.description = vm.comment;
             WebsiteService.updateWebsite(vm.websiteId, vm.website)
                 .then(function(response) {
                     $location.url("/user/" + vm.uid + "/website");

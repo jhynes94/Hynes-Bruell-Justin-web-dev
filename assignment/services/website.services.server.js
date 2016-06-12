@@ -97,7 +97,7 @@ module.exports = function (app, models) {
         var id = req.params.websiteId;
         var newWebsite = req.body;
         websiteModel
-            .updateWebsite(id, newWebsite)
+            .updateWebsite(newWebsite)
             .then(
                 function(user) {
                     res.send(200);

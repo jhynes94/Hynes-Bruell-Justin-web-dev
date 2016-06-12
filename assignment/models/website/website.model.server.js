@@ -28,7 +28,7 @@ module.exports = function() {
     
     function updateWebsite(newWebsite) {
         return Website.update(
-            {_id: newWebsite.websiteId},
+            {_id: newWebsite._id},
             {$set :
             {
                 name : newWebsite.name,
