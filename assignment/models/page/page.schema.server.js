@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 module.exports = function() {
 
     var PageSchema = mongoose.Schema({
-        _website: String,
+        _website: { type: mongoose.Schema.Types.ObjectId, ref: 'Website' },
         name: String,
         title: String,
         description: String,
