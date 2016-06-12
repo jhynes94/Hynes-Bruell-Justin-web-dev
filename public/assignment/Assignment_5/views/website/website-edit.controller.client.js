@@ -20,7 +20,7 @@
                     console.log(response.data);
                     vm.website = response.data;
                     vm.name = vm.website.name;
-                    vm.comment = vm.website.comment;
+                    vm.comment = vm.website.description;
                 });
         }
         init();

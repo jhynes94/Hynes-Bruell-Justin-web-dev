@@ -72,13 +72,25 @@ module.exports = function (app, models) {
 
     function findWebsiteById(req, res) {
         var websiteId = req.params["websiteId"];
-        for(var i in websites){
-            if(websites[i]._id === websiteId){
-                res.send(websites[i]);
-                return;
-            }
-        }
-        res.send(404);
+        websiteModel
+            . findWebsiteById(websiteId)
+            .then(
+                function(website){
+                    res.send(website);
+                },
+                function(error){
+                    res.status(400).send(error);
+                }
+            );
+
+        // var websiteId = req.params["websiteId"];
+        // for(var i in websites){
+        //     if(websites[i]._id === websiteId){
+        //         res.send(websites[i]);
+        //         return;
+        //     }
+        // }
+        // res.send(404);
     }
 
     function updateWebsite(req, res) {
