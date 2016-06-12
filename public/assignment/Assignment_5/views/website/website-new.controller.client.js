@@ -13,6 +13,10 @@
         init();
 
         function createWebsite(){
+            if(vm.name === undefined){
+                vm.error = "Name must have a Value";
+                return null;
+            }
             var website = {};
             website.comment = vm.comment;
             console.log("Comment: " + vm.comment);

@@ -6,6 +6,7 @@
 
 
 <div class="container">
+    <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
     <form method="post"
           action="/path/to/form/service">
 

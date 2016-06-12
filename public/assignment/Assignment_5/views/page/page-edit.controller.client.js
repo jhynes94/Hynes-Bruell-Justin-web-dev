@@ -28,6 +28,10 @@
         init();
 
         function updatePage() {
+            if(vm.name === ""){
+                vm.error = "Name must have a Value";
+                return null;
+            }
             console.log(vm.pageId);
             vm.page.name = vm.name;
             vm.page.title = vm.title;

@@ -14,6 +14,10 @@
         init();
 
         function createPage(){
+            if(vm.name === undefined){
+                vm.error = "Name must have a Value";
+                return null;
+            }
             var page = {};
             page._id = (Math.floor(Math.random()*90000) + 10000).toString();
             page.name = vm.name;

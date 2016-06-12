@@ -26,6 +26,10 @@
         init();
 
         function updateWebsite() {
+            if(vm.name === ""){
+                vm.error = "Name must have a Value";
+                return null;
+            }
             vm.website.name = vm.name;
             vm.website.description = vm.comment;
             WebsiteService.updateWebsite(vm.websiteId, vm.website)
