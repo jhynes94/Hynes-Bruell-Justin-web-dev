@@ -16,11 +16,6 @@ module.exports = function() {
 
     function createUser(user) {
         return User.create(user);
-        // User.create(user, function(err, user){
-        //     model.find(funct(){
-        //         model.find
-        //     })
-        // });
     }
 
     function findUserById(userId) {
@@ -40,8 +35,10 @@ module.exports = function() {
             {_id: id},
             {$set :
             {
+                username: newUser.username,
                 firstName: newUser.firstName,
-                lastName: newUser.lastName
+                lastName: newUser.lastName,
+                email: newUser.email
             }
             }
         );
