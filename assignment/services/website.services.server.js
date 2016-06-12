@@ -25,6 +25,8 @@ module.exports = function (app, models) {
         delete website.developerId;
         website.description = website.comment;
         delete website.comment;
+        delete website._id;
+
 
         websiteModel
             .createWebsite(userId, website)
@@ -45,7 +47,7 @@ module.exports = function (app, models) {
 
 
     function findAllWebsitesForUser(req, res) {
-        var developerId = req.params.developerId;
+        var developerId = req.params["userId"];
         websiteModel
             . findAllWebsitesForUser(developerId)
             .then(
