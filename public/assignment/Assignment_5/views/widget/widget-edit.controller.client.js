@@ -23,6 +23,14 @@
         init();
 
         function update(widget){
+            if(widget.name === ""){
+                vm.error = "Name must have a Value";
+                return null;
+            }
+            if(widget.name === null){
+                vm.error = "Name must have a Value";
+                return null;
+            }
             console.log(widget);
             WidgetService
                 .updateWidget(vm.wgit, widget)

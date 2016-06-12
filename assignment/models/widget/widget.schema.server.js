@@ -13,9 +13,7 @@ module.exports = function() {
         url: String,
         width: String,
         height: String,
-        //TODO Change Row to number
         rows: String,
-        //TODO Change Size to number
         size: String,
         class: String,
         icon: String,

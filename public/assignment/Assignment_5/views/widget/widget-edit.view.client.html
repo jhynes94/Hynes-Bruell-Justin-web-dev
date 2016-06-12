@@ -6,6 +6,7 @@
 
 
 <div class="container" ng-switch on="model.widget.type">
+    <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
     <form method="post" action="/path/to/form/service" ng-switch-when="HEADER">
         <fieldset class="form-group">
             <div class="form-group">

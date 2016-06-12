@@ -43,7 +43,6 @@ module.exports = function() {
                 width: widget.width,
                 height: widget.height,
                 rows: widget.rows,
-                //TODO Change Size to number
                 size: widget.size,
                 class: widget.class,
                 icon: widget.icon,
