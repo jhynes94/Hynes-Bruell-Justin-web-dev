@@ -104,6 +104,35 @@
             <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
         </fieldset>
     </form>
+
+    <form method="post" action="/path/to/form/service" ng-switch-when="HTML">
+        <fieldset class="form-group" ng-model="model.widget.text"
+                  text-angular
+                  ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+            <p>This is a Test!</p>
+        </fieldset>
+        <fieldset class="form-group">
+            <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+    </form>
+
+    <form method="post" action="/path/to/form/service" ng-switch-when="TEXT">
+        <fieldset class="form-group">
+            Text
+            <input ng-model="model.widget.text" class="form-control"/>
+            Rows
+            <input ng-model="model.widget.rows" class="form-control" type="number"/>
+            Placeholder
+            <input ng-model="model.widget.placeholder" class="form-control"/>
+            Formatted
+            <input ng-model="model.widget.formatted" type="checkbox"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
+        </fieldset>
+    </form>
 </div>
 
 <footer class="footer">

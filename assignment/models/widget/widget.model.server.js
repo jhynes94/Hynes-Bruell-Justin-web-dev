@@ -42,7 +42,7 @@ module.exports = function() {
                 url: widget.url,
                 width: widget.width,
                 height: widget.height,
-                //rows: Number,
+                rows: widget.rows,
                 //TODO Change Size to number
                 size: widget.size,
                 class: widget.class,

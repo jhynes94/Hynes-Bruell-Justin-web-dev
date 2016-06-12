@@ -8,6 +8,8 @@
         vm.newHeader = newHeader;
         vm.newYoutube = newYoutube;
         vm.newImage = newImage;
+        vm.newHTML = newHTML;
+        vm.newText = newText;
 
         function init() {
             vm.uid = $routeParams["uid"];
@@ -16,6 +18,20 @@
         }
         init();
 
+        function newText() {
+            console.log("New Text!");
+            var Text = {};
+            Text.widgetType = "TEXT";
+            Text.pageId = vm.pid;
+            internalCreateWidget(Text);
+        }
+        function newHTML() {
+            console.log("New HTML!");
+            var HTML = {};
+            HTML.widgetType = "HTML";
+            HTML.pageId = vm.pid;
+            internalCreateWidget(HTML);
+        }
         function newHeader(){
             console.log("New Header!");
             var header = {};
@@ -42,13 +58,13 @@
             header.pageId = vm.pid;
             internalCreateWidget(header);
         }
-        
+
         function internalCreateWidget(header) {
             console.log(header);
             WidgetService
                 .createWidget(header.pageId, header)
                 .then(function(response) {
-                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + header._id);
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + response._id);
                 });
                 
         }

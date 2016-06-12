@@ -68,10 +68,34 @@
                 </div>
             </td>
         </tr>
+        <tr ng-switch-when="TEXT">
+            <td ng-bind-html="model.getTrustedHtml(widget)">
+                <div ng-if="widget.formatted" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]"></div>
+                <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                       placeholder="{{widget.textInput.placeholder}}"
+                       class="form-control"/>
+                <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                          rows="{{widget.rows}}"
+                          placeholder="{{widget.placeholder}}"
+                          class="form-control">{{widget.text}}</textarea>
+
+            </td>
+            <td>
+                <div class="widget-edits">
+                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </a>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
 <p></p>
+<h1></h1>
 <footer class="footer">
     <div class=" pull-left">
         <i class="fa fa-play fa-2x" aria-hidden="true"></i>
