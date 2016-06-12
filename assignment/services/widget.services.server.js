@@ -41,7 +41,7 @@ module.exports = function (app, models) {
             .createWidget(oldWidget.pageId, newWidget)
             .then(
                 function(widget) {
-                    res.json(widget);
+                    res.send(widget);
                 },
                 function(error) {
                     res.status(400).send("Creation Error");

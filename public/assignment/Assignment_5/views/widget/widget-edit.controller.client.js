@@ -18,6 +18,9 @@
                 .then(function(response) {
                     console.log(response.data);
                     vm.widget = response.data;
+                    if(vm.widget.text === "NewWidgetToFormat"){
+                        vm.widget.text = "";
+                    }
                 });
         }
         init();

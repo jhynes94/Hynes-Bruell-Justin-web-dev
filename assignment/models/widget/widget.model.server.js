@@ -16,8 +16,8 @@ module.exports = function() {
 
     function createWidget(pageId, widget) {
         widget._page = pageId;
-        return Widget.create(widget);
-        //return Widget.find({text: "NewWidgetToFormat222"})[0];
+        Widget.create(widget);
+        return Widget.findOne({text: "NewWidgetToFormat"});
     }
 
     function findAllWidgetsForPage(pageId) {

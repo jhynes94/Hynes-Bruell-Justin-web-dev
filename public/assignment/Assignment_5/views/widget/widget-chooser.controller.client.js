@@ -64,9 +64,8 @@
             WidgetService
                 .createWidget(header.pageId, header)
                 .then(function(response) {
-                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + response._id);
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/" + response.data._id);
                 });
-                
         }
     }
 })();
