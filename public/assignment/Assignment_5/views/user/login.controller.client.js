@@ -15,26 +15,44 @@
                 .findUserByUsernameAndPassword(username, password)
                 .then(function (response) {
                     var user = response.data;
-                    $location.url("/user/" + user._id);
+                    if(user === null){
+                        vm.error = "User not found";
+                    }
+                    else{
+                        $location.url("/user/" + user._id);
+                    }
                 }, function (error) {
-                    vm.error = "User not found. Error: " + error;
+                    vm.error = "Error: " + error;
                 })
         }
 
-
-        //TODO add randomly created ID
         function createNewUser(username, password, vPassword) {
             if (!(password === vPassword)) {
                 vm.error = "Non-Matching Passwords";
                 return null;
             }
-            var newUser = {username: username, password: password};
-            UserService.createUser(newUser)
+
+            //Check if User already exists
+            UserService.findUserByUsername(username)
                 .then(function (response) {
-                    login(username, password);
+                    console.log(response);
+                    if(response.data.username === username){
+                        vm.error = "UserName Already in Use";
+                        return null;
+                    }
+                    else{
+                        var newUser = {username: username, password: password};
+                        UserService.createUser(newUser)
+                            .then(function (response) {
+                                console.log(vm.error);
+                                login(username, password);
+                            }, function (error) {
+                                vm.error = "User Not Created, Error: " + error;
+                            })
+                    }
                 }, function (error) {
-                    vm.error = "User Not Created, Error: " + error;
-                })
+                    vm.error = "Error Seaching for User";
+                });
         }
     }
 })();

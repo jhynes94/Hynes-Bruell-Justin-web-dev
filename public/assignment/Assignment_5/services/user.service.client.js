@@ -10,9 +10,10 @@
             findUserByUsernameAndPassword: findUserByCredentials,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
-            findUserByUsername: findUserByUsername,
+            getUsers: getUsers,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            findUserByUsername: findUserByUsername
         };
         return api;
 
@@ -34,14 +35,9 @@
             return $http.delete(url);
         }
     
-        //TODO Update this
-        function findUserByUsername(username) {
-            for (var i in users) {
-                if (users[i].username === username) {
-                    return users[i];
-                }
-            }
-            return null;
+        function getUsers() {
+            var url = "/api/user";
+            return $http.get(url);
         }
 
         function findUserByCredentials(username, password) {
@@ -50,6 +46,10 @@
         }
         function findUserById(id) {
             var url = "/api/user/" + id;
+            return $http.get(url);
+        }
+        function findUserByUsername(userName){
+            var url = "/api/userSearch/" + userName;
             return $http.get(url);
         }
 

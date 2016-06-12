@@ -14,6 +14,7 @@ module.exports = function (app, models) {
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
+    app.get("/api/userSearch/:userName", findUserByUsername);
 
     function createUser(req, res) {
         var newUser = req.body;
@@ -140,6 +141,20 @@ module.exports = function (app, models) {
         //     }
         // }
         // res.send(404);
+    }
+
+    function findUserByUsername(req, res) {
+        var userName = req.params.userName;
+        userModel
+            .findUserByUsername(userName)
+            .then(
+                function(user){
+                    res.send(user);
+                },
+                function(error){
+                    res.status(400).send(error);
+                }
+            );
     }
 
 
