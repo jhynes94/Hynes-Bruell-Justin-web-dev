@@ -22,7 +22,16 @@ module.exports = function() {
                 function (widgets) {
                     widget.order = widgets.length;
                     Widget.create(widget);
-                    return Widget.findOne({text: "NewWidgetToFormat"});
+                    return Widget
+                        .findOne({_page: pageId})
+                        .then(
+                            function (widgets) {
+                                return widgets;
+                            },
+                            function (error) {
+                                return null;
+                            }
+                        );
                 },
                 function (error) {
                     return null;
