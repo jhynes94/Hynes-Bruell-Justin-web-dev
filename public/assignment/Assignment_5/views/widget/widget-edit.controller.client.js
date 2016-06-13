@@ -34,6 +34,10 @@
                 vm.error = "Name must have a Value";
                 return null;
             }
+            if(widget.name === undefined){
+                vm.error = "Name must have a Value";
+                return null;
+            }
             console.log(widget);
             WidgetService
                 .updateWidget(vm.wgit, widget)

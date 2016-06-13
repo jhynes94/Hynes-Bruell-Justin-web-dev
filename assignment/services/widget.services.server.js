@@ -51,7 +51,6 @@ module.exports = function (app, models) {
             size: oldWidget.size,
             width: oldWidget.width,
             type: oldWidget.widgetType,
-            order: 0,
             text: "NewWidgetToFormat"
         };
         widgetModel
@@ -171,18 +170,46 @@ module.exports = function (app, models) {
         // res.status(404).send("Unable to remove widget with ID: " + id);
     }
 
-    function uploadImage(req, res) {
-
+    function uploadImage(req, resp) {
         var widgetId = req.body.widgetId;
+        var pageId = req.body.pageId;
+        var websiteId = req.body.websiteId;
+        var userId = req.body.userId;
         var width = req.body.width;
-        var myFile = req.file;
+        var myFile = req.file; //Dedicated attribute for files.
 
-        var originalname = myFile.originalname; // file name on user's computer
-        var filename = myFile.filename;     // new file name in upload folder
-        var path = myFile.path;         // full path of uploaded file
-        var destination = myFile.destination;  // folder where file is saved to
-        var size = myFile.size;
-        var mimetype = myFile.mimetype;
+        var originalname = myFile.originalname;
+        var filename     = myFile.filename; //Service will need this filename to find the file in the future.
+        var path         = myFile.path;
+        var destination  = myFile.destination;
+        var size         = myFile.size;
+        var mimetype     = myFile.mimetype;
+
+
+        widgetModel
+            .findWidgetById(widgetId)
+            .then(
+                function (widget) {
+                    var widgetToEdit = widget;
+                    widgetToEdit.width = width;
+                    widgetToEdit.url = "/../uploads/" + filename;
+                    widgetModel
+                        .updateWidget(widgetId, widgetToEdit)
+                        .then(
+                            function (widget) {
+                                resp.redirect("./../assignment/index.html#/user/" + userId + "/website/" + websiteId +
+                                    "/page/" + pageId + "/widget/" + widgetId);
+                            },
+                            function (error) {
+                                resp.status(400).send("Widget with id: " + widgetId +
+                                    " could not be updated. Widget not found.");
+                            }
+                        );
+                },
+                function (error) {
+                    resp.status(404).send("Could not add image to widget with id: " + widgetId);
+                }
+            );
     }
 
 };

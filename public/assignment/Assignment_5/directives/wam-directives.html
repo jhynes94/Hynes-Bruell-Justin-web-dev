@@ -1,15 +1,12 @@
-<h3>{{title}}</h3>
-
 <div class="widget-container sortWidgets">
     <div ng-repeat="widget in data.widgets | orderBy : 'order'"
          ng-switch="widget.type"
     >
         <div class="J-widget-edit">
-            <a href="#/user/{{data.uid}}/website/{{data.wid}}/page/{{data.pid}}/widget/{{widget._id}}"
-            >
-                <span class="glyphicon glyphicon-cog"></span>
-                <span class="glyphicon glyphicon-align-justify"></span>
+            <a href="#/user/{{data.uid}}/website/{{data.wid}}/page/{{data.pid}}/widget/{{widget._id}}">
+                <i class="glyphicon fa fa-cog fa-lg" aria-hidden="true"></i>
             </a>
+            <i class="glyphicon fa fa-bars fa-lg" aria-hidden="true"></i>
         </div>
         <div ng-switch-when="HEADER"
              class="J-widget">
