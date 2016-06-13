@@ -13,7 +13,7 @@
             console.log("WidgetListController");
             console.log("start: " + start + ", stop: " + stop);
             WidgetService
-                .updateWidgetSort(vm.pageId, start, stop)
+                .updateWidgetSort(vm.pid, start, stop)
                 .then(
                     function (resp) {
                         vm.widgets = resp.data;

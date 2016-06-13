@@ -25,25 +25,23 @@ module.exports = function (app, models) {
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.post("/api/upload", upload.single('myFile'), uploadImage);
-    app.put("/page/:pageId/widget", updateWidgetSort);
+    app.put("/api/page/:pageId/widget", updateWidgetSort);
 
     function updateWidgetSort(req, res) {
-        var index1 = req.query["index1"];
-        var index2 = req.query["index2"];
+        var start = req.query["start"];
+        var end = req.query["end"];
         var pageId = req.params["pageId"];
 
         widgetModel
-            .reorderWidget(pageId, index1, index2)
+            .reorderWidget(pageId, start, end)
             .then(
-                function (widgets) {
-                    res.send(widgets);
+                function (widget) {
+                    resp.send(widget);
                 },
                 function (error) {
-                    res.status(400).send(error);
+                    resp.status(400).send("Widget reorder failed.");
                 }
             );
-
-        return null;
     }
 
     function createWidget(req, res) {
