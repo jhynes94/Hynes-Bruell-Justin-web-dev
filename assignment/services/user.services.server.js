@@ -94,6 +94,9 @@ module.exports = function (app, models) {
 
 
     function getUsers(req, res) {
+
+        //qconsole.log(req.session.currentUser);
+
         var username = req.query["username"];
         var password = req.query["password"];
         if(username && password) {

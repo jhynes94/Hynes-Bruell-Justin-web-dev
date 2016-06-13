@@ -51,7 +51,7 @@ module.exports = function (app, models) {
             size: oldWidget.size,
             width: oldWidget.width,
             type: oldWidget.widgetType,
-            text: "NewWidgetToFormat"
+            text: ""
         };
         widgetModel
             .createWidget(oldWidget.pageId, newWidget)

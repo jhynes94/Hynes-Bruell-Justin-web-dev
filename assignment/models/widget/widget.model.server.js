@@ -16,22 +16,31 @@ module.exports = function() {
 
     function createWidget(pageId, widget) {
         widget._page = pageId;
+        widget.text = "NewWidgetToConfigure";
         return Widget
             .find({_page: pageId})
             .then(
                 function (widgets) {
                     widget.order = widgets.length;
-                    Widget.create(widget);
                     return Widget
-                        .findOne({_page: pageId})
+                        .create(widget)
                         .then(
                             function (widgets) {
-                                return widgets;
+                                return Widget
+                                    .findOne({text: "NewWidgetToConfigure"})
+                                    .then(
+                                        function (widgets) {
+                                            return widgets;
+                                        },
+                                        function (error) {
+                                            return null;
+                                        }
+                                    );
                             },
                             function (error) {
                                 return null;
                             }
-                        );
+                        )
                 },
                 function (error) {
                     return null;

@@ -18,14 +18,6 @@
                 .then(function(response) {
                     console.log(response.data);
                     vm.widget = response.data;
-                    if(vm.widget.text == "NewWidgetToFormat"){
-                        vm.widget.text = "";
-                        WidgetService
-                            .updateWidget(vm.wgit, vm.widget)
-                            .then(function(response) {
-                                vm.widget = response.data;
-                            });
-                    }
                 });
         }
         init();
