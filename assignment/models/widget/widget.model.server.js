@@ -76,6 +76,15 @@ module.exports = function() {
         return Widget.remove({_id: widgetId});
     }
 
+    /**
+     * This has some work left to be done.
+     * When images are deleted, the order should be careful to re-order itself such that it can continue to function correctly
+     * Also after one is deleted and another is added, there will be two of the same Order
+     * @param pageId
+     * @param index1
+     * @param index2
+     * @returns {Promise}
+     */
     function reorderWidget(pageId, index1, index2) {
         index1 = parseInt(index1);
         index2 = parseInt(index2);
