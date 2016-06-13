@@ -25,11 +25,17 @@ module.exports = function (app, models) {
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.post ("/api/upload", upload.single('myFile'), uploadImage);
+    app.put("/page/:pageId/widget", updateWidgetSort);
 
+    function updateWidgetSort(req, res) {
+        var index1 = req.query["index1"];
+        var index2 = req.query["index2"];
+        var pageId = req.params["pageId"];
+        return null;
+    }
 
     function createWidget(req, res) {
         var oldWidget = req.body;
-        //TODO USE ENUM FOR TYPE!
         var newWidget = {
             //size: Number(oldWidget.size),
             size: oldWidget.size,
