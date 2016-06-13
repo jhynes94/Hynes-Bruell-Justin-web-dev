@@ -16,8 +16,18 @@ module.exports = function() {
 
     function createWidget(pageId, widget) {
         widget._page = pageId;
-        Widget.create(widget);
-        return Widget.findOne({text: "NewWidgetToFormat"});
+        return Widget
+            .find({_page: pageId})
+            .then(
+                function (widgets) {
+                    widget.order = widgets.length;
+                    Widget.create(widget);
+                    return Widget.findOne({text: "NewWidgetToFormat"});
+                },
+                function (error) {
+                    return null;
+                }
+            );
     }
 
     function findAllWidgetsForPage(pageId) {
@@ -28,7 +38,6 @@ module.exports = function() {
         return Widget.findById(widgetId);
     }
 
-    //TODO Finish This!
     function updateWidget(widgetId, widget) {
         return Widget.update(
             {_id: widgetId},
@@ -45,6 +54,7 @@ module.exports = function() {
                 rows: widget.rows,
                 size: widget.size,
                 class: widget.class,
+                order: widget.order,
                 icon: widget.icon,
                 deletable: widget.deletable,
                 formatted: widget.formatted,
@@ -57,8 +67,39 @@ module.exports = function() {
         return Widget.remove({_id: widgetId});
     }
 
-    //TODO
-    function reorderWidget(pageId, start, end) {
-        
+    function reorderWidget(pageId, index1, index2) {
+        index1 = parseInt(index1);
+        index2 = parseInt(index2);
+        return Widget
+            .find({_page: pageId})
+            .then(
+                function (widgets) {
+                    for(var i in widgets) {
+                        var widget = widgets[i];
+
+                        if(index1 < index2) {
+                            if(widget.order > index1 && widget.order <= index2) {
+                                widget.order --;
+                                widget.save();
+                            } else if(widget.order === index1) {
+                                widget.order = index2;
+                                widget.save();
+                            }
+                        } else if (index1 > index2) {
+                            if(widget.order >= index2 && widget.order < index1) {
+                                widget.order ++;
+                                widget.save();
+                            } else if(widget.order === index1) {
+                                widget.order = index2;
+                                widget.save();
+                            }
+                        }
+                    }
+                    return Widget.find({_page: pageId});
+                },
+                function (error) {
+                    return null;
+                }
+            );
     }
 };

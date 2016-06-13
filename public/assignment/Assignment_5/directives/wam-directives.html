@@ -1,0 +1,67 @@
+<div class="widget-container sortWidgets">
+    <div ng-repeat="widget in data.widgets | orderBy : 'order'"
+         ng-switch="widget.widgetType"
+    >
+        <div class="bmd-widget-edit">
+            <a href="#/user/{{data.userId}}/website/{{data.websiteId}}/page/{{data.pageId}}/widget/{{widget._id}}"
+            >
+                <span class="glyphicon glyphicon-cog"></span>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </a>
+        </div>
+
+        <div ng-switch-when="HEADER"
+             class="bmd-widget">
+
+            <div ng-switch="widget.size">
+                <h1 ng-switch-when="1">{{widget.text}}</h1>
+
+                <h2 ng-switch-when="2">{{widget.text}}</h2>
+
+                <h3 ng-switch-when="3">{{widget.text}}</h3>
+
+                <h4 ng-switch-when="4">{{widget.text}}</h4>
+
+                <h5 ng-switch-when="5">{{widget.text}}</h5>
+
+                <h6 ng-switch-when="6">{{widget.text}}</h6>
+
+                <p ng-switch-default>{{widget.text}}</p>
+            </div>
+        </div>
+        <div ng-switch-when="HTML"
+             class="bmd-widget"
+             ng-bind-html="data.getTrustedHtml(widget)">
+        </div>
+        <div ng-switch-when="IMAGE"
+             class="bmd-widget">
+            <img
+                    ng-src="{{widget.url}}"
+                    width="{{widget.width}}">
+        </div>
+        <div ng-switch-when="YOUTUBE"
+             class="bmd-widget youtube­widget">
+            <iframe width="{{widget.width}}"
+                    height="auto"
+                    ng-src="{{data.getTrustedUrl(widget)}}"
+                    frameborder="0"
+                    allowfullscreen></iframe>
+        </div>
+        <div ng-switch-when="TEXT"
+             class="bmd-widget">
+            <div ng-if="widget.formatted"
+                 text-angular>
+            </div>
+            <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   placeholder="{{widget.textInput.placeholder}}"
+                   class="form­control"/>
+                    <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                              rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                              class="form­control">{{widget.text}}</textarea>
+        </div>
+        <div ng-switch-default
+             class="bmd-widget">
+            <p>{{widget.text}}</p>
+        </div>
+    </div>
+</div>

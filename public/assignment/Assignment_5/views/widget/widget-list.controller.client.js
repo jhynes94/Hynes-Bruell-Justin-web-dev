@@ -7,6 +7,22 @@
         var vm = this;
         vm.getTrustedUrl = getTrustedUrl;
         vm.getTrustedHtml = getTrustedHtml;
+        vm.sortList = sortList;
+
+        function sortList(start, stop) {
+            console.log("WidgetListController");
+            console.log("start: " + start + ", stop: " + stop);
+            WidgetService
+                .updateWidgetSort(vm.pageId, start, stop)
+                .then(
+                    function (resp) {
+                        vm.widgets = resp.data;
+                    },
+                    function (error) {
+                        vm.error = error.data;
+                    }
+                );
+        }
 
         function init() {
             vm.uid = $routeParams["uid"];
@@ -20,7 +36,7 @@
                 });
             console.log(vm.widgets);
             
-            $( "#sortable" ).sortable({ axis: 'y', handle: '.fa-bars', placeholder: "ui-state-highlight"}).disableSelection();
+            $( ".table" ).sortable({ axis: 'y', handle: '.fa-bars', placeholder: "ui-state-highlight"}).disableSelection();
         }
         init();
 

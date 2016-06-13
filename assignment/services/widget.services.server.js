@@ -1,10 +1,10 @@
 module.exports = function (app, models) {
 
     var widgetModel = models.widgetModel;
-    
+
     var multer = require('multer'); // npm install multer --save
-    var upload = multer({ dest: __dirname+'/../../public/uploads' });
-    
+    var upload = multer({dest: __dirname + '/../../public/uploads'});
+
     // var widgets = [
     //     { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
     //     { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -24,13 +24,25 @@ module.exports = function (app, models) {
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
-    app.post ("/api/upload", upload.single('myFile'), uploadImage);
+    app.post("/api/upload", upload.single('myFile'), uploadImage);
     app.put("/page/:pageId/widget", updateWidgetSort);
 
     function updateWidgetSort(req, res) {
         var index1 = req.query["index1"];
         var index2 = req.query["index2"];
         var pageId = req.params["pageId"];
+
+        widgetModel
+            .reorderWidget(pageId, index1, index2)
+            .then(
+                function (widgets) {
+                    res.send(widgets);
+                },
+                function (error) {
+                    res.status(400).send(error);
+                }
+            );
+
         return null;
     }
 
@@ -41,15 +53,16 @@ module.exports = function (app, models) {
             size: oldWidget.size,
             width: oldWidget.width,
             type: oldWidget.widgetType,
+            order: 0,
             text: "NewWidgetToFormat"
         };
         widgetModel
             .createWidget(oldWidget.pageId, newWidget)
             .then(
-                function(widget) {
+                function (widget) {
                     res.send(widget);
                 },
-                function(error) {
+                function (error) {
                     res.status(400).send("Creation Error");
                 }
             );
@@ -63,12 +76,12 @@ module.exports = function (app, models) {
     function findAllWidgetsForPage(req, res) {
         var pageId = req.params["pageId"];
         widgetModel
-            . findAllWidgetsForPage(pageId)
+            .findAllWidgetsForPage(pageId)
             .then(
-                function(widgets){
+                function (widgets) {
                     res.send(widgets);
                 },
-                function(error){
+                function (error) {
                     res.status(400).send(error);
                 }
             );
@@ -87,12 +100,12 @@ module.exports = function (app, models) {
     function findWidgetById(req, res) {
         var widgetId = req.params["widgetId"];
         widgetModel
-            . findWidgetById(widgetId)
+            .findWidgetById(widgetId)
             .then(
-                function(widget){
+                function (widget) {
                     res.send(widget);
                 },
-                function(error){
+                function (error) {
                     res.status(400).send(error);
                 }
             );
@@ -114,10 +127,10 @@ module.exports = function (app, models) {
         widgetModel
             .updateWidget(id, newWidget)
             .then(
-                function(page) {
+                function (page) {
                     res.send(200);
                 },
-                function(error) {
+                function (error) {
                     res.status(404).send("Unable to update user with ID: " + id);
                 }
             );
@@ -162,16 +175,16 @@ module.exports = function (app, models) {
 
     function uploadImage(req, res) {
 
-        var widgetId      = req.body.widgetId;
-        var width         = req.body.width;
-        var myFile        = req.file;
+        var widgetId = req.body.widgetId;
+        var width = req.body.width;
+        var myFile = req.file;
 
-        var originalname  = myFile.originalname; // file name on user's computer
-        var filename      = myFile.filename;     // new file name in upload folder
-        var path          = myFile.path;         // full path of uploaded file
-        var destination   = myFile.destination;  // folder where file is saved to
-        var size          = myFile.size;
-        var mimetype      = myFile.mimetype;
+        var originalname = myFile.originalname; // file name on user's computer
+        var filename = myFile.filename;     // new file name in upload folder
+        var path = myFile.path;         // full path of uploaded file
+        var destination = myFile.destination;  // folder where file is saved to
+        var size = myFile.size;
+        var mimetype = myFile.mimetype;
     }
-    
+
 };

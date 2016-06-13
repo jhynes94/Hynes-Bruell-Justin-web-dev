@@ -35,7 +35,7 @@
             return $http.delete(url);
         }
         function updateWidgetSort(pageId, index1, index2) {
-            var url = "/page/" + pageId + "/widget?start=" + index1 + "&end=" + index2;
+            var url = "api/page/" + pageId + "/widget?start=" + index1 + "&end=" + index2;
             return $http.put(url);
         }
     }

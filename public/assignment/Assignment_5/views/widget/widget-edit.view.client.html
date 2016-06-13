@@ -107,6 +107,8 @@
     </form>
 
     <form method="post" action="/path/to/form/service" ng-switch-when="HTML">
+        Name
+        <input ng-model="model.widget.name" class="form-control"/>
         <fieldset class="form-group" ng-model="model.widget.text"
                   text-angular
                   ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
@@ -121,6 +123,8 @@
 
     <form method="post" action="/path/to/form/service" ng-switch-when="TEXT">
         <fieldset class="form-group">
+            Name
+            <input ng-model="model.widget.name" class="form-control"/>
             Text
             <input ng-model="model.widget.text" class="form-control"/>
             Rows
@@ -134,6 +138,7 @@
             <a ng-click="model.deleteWidget(model.widget)" class="btn btn-block btn-danger" role="button">Delete</a>
         </fieldset>
     </form>
+    <h1></h1>
 </div>
 
 <footer class="footer">

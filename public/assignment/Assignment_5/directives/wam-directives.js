@@ -1,44 +1,33 @@
-(function(){
-    angular
-        .module("wamDirectives", [])
-        .directive("wam-sortable", wamSortable);
+(function () {
+    angular.module("wamDirectives", [])
+        .directive("wamSortable", wamSortable);
 
     function wamSortable() {
         function linker(scope, element, attributes) {
-            var data = scope.data;
-            var startIndex = -1;
-            var endIndex = -1;
+            var start = -1;
+            var stop = -1;
             $(element)
-                .find("table")
+                .find(".sortWidgets")
                 .sortable({
-                    start: function(event, ui) {
-                        console.log("sorting began");
-                        startIndex = ui.item.index();
-                        console.log(startIndex);
+                    start: function (event, ui) {
+                        start =  ui.item.index();
+                        console.log("Start");
                     },
                     stop: function (event, ui) {
-                        console.log("sorting stopped");
-                        endIndex = ui.item.index();
-                        console.log(endIndex);
-
-                        var sortedElement = scope.data.splice(startIndex, 1)[0];
-                        scope.data.splice(endIndex, 0, sortedElement);
-                        console.log(scope.data);
-
-                        scope.$apply();
-
-                        // scope.$parent.model.sorted(startIndex, endIndex);
-                        scope.reorder({start: startIndex, end: endIndex});
+                        stop = ui.item.index();
+                        console.log("Stop");
+                        //scope.$apply();
+                        scope.$parent.model.sortList(start, stop);
+                        //scope.reorder({start: start, stop: stop});
                     }
                 });
         }
         return {
-            templateUrl: "myTable.html",
+            templateUrl: "directives/wam-directives.html",
             scope: {
-                title:  "=",
-                border: "=",
-                data:   "=",
-                reorder: "&sorted"
+                title: "=",
+                data: "=",
+                reorder: "&sortList"
             },
             link: linker
         }
