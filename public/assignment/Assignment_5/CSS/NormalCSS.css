@@ -89,6 +89,14 @@ h3 {
     display: block;
 }
 
+.header-present {
+    padding-top: 75px;
+}
+
+.footer-present {
+    padding-bottom: 75px;
+}
+
 a:link {
     text-decoration: none;
 }
@@ -105,13 +113,13 @@ a:active {
     text-decoration: none;
 }
 
-.video-container {
+.youtube­widget  {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
 }
 
-.youtube-widget iframe {
+.youtube­widget iframe  {
     position: absolute;
     top: 0;
     left: 0;
@@ -139,3 +147,38 @@ td {
 tr {
     min-height: 100px;
 }
+
+
+
+.J-widget {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.J-widget img {
+    padding-top: 2px;
+}
+
+.J-widget iframe {
+    padding-top: 2px;
+}
+
+.J-widget-edit {
+    position: absolute;
+    z-index: 2;
+    right: 0px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+    margin-right: 5px;
+}
+
+.J-margin-top-10 {
+    margin-top: 10px;
+}
+
+.J-photo-array {
+    padding: 4px;
+}
+

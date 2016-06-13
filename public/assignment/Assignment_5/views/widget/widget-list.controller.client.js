@@ -10,7 +10,8 @@
         vm.sortList = sortList;
 
         function sortList(start, stop) {
-            console.log("WidgetListController");
+            console.log("Widget Controller");
+
             console.log("start: " + start + ", stop: " + stop);
             WidgetService
                 .updateWidgetSort(vm.pid, start, stop)
@@ -35,7 +36,7 @@
                     vm.widgets = response.data;
                 });
             console.log(vm.widgets);
-            
+            $(".widget-container").sortable({axis: "y"});
             $( ".table" ).sortable({ axis: 'y', handle: '.fa-bars', placeholder: "ui-state-highlight"}).disableSelection();
         }
         init();

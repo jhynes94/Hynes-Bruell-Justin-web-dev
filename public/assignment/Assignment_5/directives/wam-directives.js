@@ -4,6 +4,7 @@
 
     function wamSortable() {
         function linker(scope, element, attributes) {
+            var data = scope.data;
             var start = -1;
             var stop = -1;
             $(element)

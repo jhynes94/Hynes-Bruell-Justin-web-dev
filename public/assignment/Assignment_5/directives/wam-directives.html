@@ -1,17 +1,18 @@
+<h3>{{title}}</h3>
+
 <div class="widget-container sortWidgets">
     <div ng-repeat="widget in data.widgets | orderBy : 'order'"
-         ng-switch="widget.widgetType"
+         ng-switch="widget.type"
     >
-        <div class="bmd-widget-edit">
-            <a href="#/user/{{data.userId}}/website/{{data.websiteId}}/page/{{data.pageId}}/widget/{{widget._id}}"
+        <div class="J-widget-edit">
+            <a href="#/user/{{data.uid}}/website/{{data.wid}}/page/{{data.pid}}/widget/{{widget._id}}"
             >
                 <span class="glyphicon glyphicon-cog"></span>
                 <span class="glyphicon glyphicon-align-justify"></span>
             </a>
         </div>
-
         <div ng-switch-when="HEADER"
-             class="bmd-widget">
+             class="J-widget">
 
             <div ng-switch="widget.size">
                 <h1 ng-switch-when="1">{{widget.text}}</h1>
@@ -30,17 +31,15 @@
             </div>
         </div>
         <div ng-switch-when="HTML"
-             class="bmd-widget"
+             class="J-widget"
              ng-bind-html="data.getTrustedHtml(widget)">
         </div>
         <div ng-switch-when="IMAGE"
-             class="bmd-widget">
-            <img
-                    ng-src="{{widget.url}}"
-                    width="{{widget.width}}">
+             class="J-widget">
+            <img ng-src="{{widget.url}}" width="{{widget.width}}">
         </div>
         <div ng-switch-when="YOUTUBE"
-             class="bmd-widget youtube­widget">
+             class="J-widget youtube­widget">
             <iframe width="{{widget.width}}"
                     height="auto"
                     ng-src="{{data.getTrustedUrl(widget)}}"
@@ -48,19 +47,22 @@
                     allowfullscreen></iframe>
         </div>
         <div ng-switch-when="TEXT"
-             class="bmd-widget">
+             class="J-widget">
             <div ng-if="widget.formatted"
-                 text-angular>
+                 ng-model="widget.text"
+                 text-angular
+                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'], ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'], ['indent','outdent'],['html']]">
             </div>
             <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
-                   placeholder="{{widget.textInput.placeholder}}"
-                   class="form­control"/>
-                    <textarea ng-if="!widget.formatted && (widget.rows > 1)"
-                              rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
-                              class="form­control">{{widget.text}}</textarea>
+                   placeholder="{{widget.placeholder}}"
+                   class="form-control"/>
+            <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                      rows="{{widget.rows}}"
+                      placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
         </div>
         <div ng-switch-default
-             class="bmd-widget">
+             class="J-widget">
             <p>{{widget.text}}</p>
         </div>
     </div>
