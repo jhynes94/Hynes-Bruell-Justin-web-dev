@@ -16,6 +16,23 @@ module.exports = function (app, models) {
     app.delete("/api/user/:userId", deleteUser);
     app.get("/api/userSearch/:userName", findUserByUsername);
 
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        developerModel
+            .findDeveloperById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
+
     function createUser(req, res) {
         var newUser = req.body;
 

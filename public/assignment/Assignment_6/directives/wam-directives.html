@@ -1,0 +1,67 @@
+<div class="widget-container sortWidgets">
+    <div ng-repeat="widget in data.widgets | orderBy : 'order'"
+         ng-switch="widget.type"
+    >
+        <div class="J-widget-edit">
+            <a href="#/user/{{data.uid}}/website/{{data.wid}}/page/{{data.pid}}/widget/{{widget._id}}">
+                <i class="glyphicon fa fa-cog fa-lg" aria-hidden="true"></i>
+            </a>
+            <i class="glyphicon fa fa-bars fa-lg" aria-hidden="true"></i>
+        </div>
+        <div ng-switch-when="HEADER"
+             class="J-widget">
+
+            <div ng-switch="widget.size">
+                <h1 ng-switch-when="1">{{widget.text}}</h1>
+
+                <h2 ng-switch-when="2">{{widget.text}}</h2>
+
+                <h3 ng-switch-when="3">{{widget.text}}</h3>
+
+                <h4 ng-switch-when="4">{{widget.text}}</h4>
+
+                <h5 ng-switch-when="5">{{widget.text}}</h5>
+
+                <h6 ng-switch-when="6">{{widget.text}}</h6>
+
+                <p ng-switch-default>{{widget.text}}</p>
+            </div>
+        </div>
+        <div ng-switch-when="HTML"
+             class="J-widget"
+             ng-bind-html="data.getTrustedHtml(widget)">
+        </div>
+        <div ng-switch-when="IMAGE"
+             class="J-widget">
+            <img ng-src="{{widget.url}}" width="{{widget.width}}">
+        </div>
+        <div ng-switch-when="YOUTUBE"
+             class="J-widget youtube­widget">
+            <iframe width="{{widget.width}}"
+                    height="auto"
+                    ng-src="{{data.getTrustedUrl(widget)}}"
+                    frameborder="0"
+                    allowfullscreen></iframe>
+        </div>
+        <div ng-switch-when="TEXT"
+             class="J-widget">
+            <div ng-if="widget.formatted"
+                 ng-model="widget.text"
+                 text-angular
+                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'], ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'], ['indent','outdent'],['html']]">
+            </div>
+            <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   placeholder="{{widget.placeholder}}"
+                   class="form-control"/>
+            <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                      rows="{{widget.rows}}"
+                      placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
+        </div>
+        <div ng-switch-default
+             class="J-widget">
+            <p>{{widget.text}}</p>
+        </div>
+    </div>
+</div>
+<h1></h1>

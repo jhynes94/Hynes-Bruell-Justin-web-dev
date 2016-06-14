@@ -1,0 +1,86 @@
+<table id="sortable" class="table table-striped" sorted="model.sorted(start, end)">
+    <tbody ng-repeat="widget in model.widgets" ng-switch on="widget.type">
+    <tr ng-switch-when="HEADER">
+        <td ng-switch="widget.size">
+            <h1 ng-switch-when="1">{{widget.text}}</h1>
+            <h2 ng-switch-when="2">{{widget.text}}</h2>
+            <h3 ng-switch-when="3">{{widget.text}}</h3>
+            <h4 ng-switch-when="4">{{widget.text}}</h4>
+            <h5 ng-switch-when="5">{{widget.text}}</h5>
+            <h6 ng-switch-when="6">{{widget.text}}</h6>
+        </td>
+        <td>
+            <div class="widget-edits">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </td>
+    </tr>
+    <tr ng-switch-when="IMAGE">
+        <td>
+            <img border="0" ng-src="{{widget.url}}" width="{{widget.width}}" height="auto">
+        </td>
+        <td>
+            <div class="widget-edits">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </td>
+    </tr>
+
+    <tr ng-switch-when="HTML">
+        <td ng-bind-html="model.getTrustedHtml(widget)">
+        </td>
+        <td>
+            <div class="widget-edits">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </td>
+    </tr>
+    <tr ng-switch-when="YOUTUBE">
+        <div class="video">
+            <td height="auto">
+                <div class="video-container"><iframe width="80%" height="auto" ng-src="{{model.getTrustedUrl(widget)}}" frameborder="0" allowfullscreen></iframe></div>
+            </td>
+        </div>
+        <td>
+            <div class="widget-edits">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </td>
+    </tr>
+    <tr ng-switch-when="TEXT">
+        <td ng-bind-html="model.getTrustedHtml(widget)">
+            <div ng-if="widget.formatted" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]"></div>
+            <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   placeholder="{{widget.textInput.placeholder}}"
+                   class="form-control"/>
+                <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                          rows="{{widget.rows}}"
+                          placeholder="{{widget.placeholder}}"
+                          class="form-control">{{widget.text}}</textarea>
+
+        </td>
+        <td>
+            <div class="widget-edits">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website/{{model.wid}}/page"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <h3>Widgets</h3>
+    <div class="Check_Icon"><a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+<div class="container" >
+    <wam-sortable title="'Widget Table'"
+                  sort="model.sortList(start, stop)"
+                  data="model">
+    </wam-sortable>
+</div>
+<p></p>
+<h1></h1>
+<footer class="footer">
+    <div class=" pull-left">
+        <i class="fa fa-play fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+    </div>
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>

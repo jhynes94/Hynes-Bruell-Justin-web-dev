@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website/{{model.websiteId}}/page"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <h3>New Page</h3>
+    <div class="Check_Icon"><a ng-click="model.createPage()"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+<div class="container">
+    <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
+    <form method="post"
+          action="/path/to/form/service">
+        <fieldset class="form-group">
+            <label for="name">Name</label>
+            <input name="name"
+                   ng-model="model.name"
+                   id="name"
+                   type="text"
+                   placeholder="Page Name"
+                   class="form-control"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="title">Title</label>
+            <input name="title"
+                   ng-model="model.title"
+                   id="title"
+                   type="text"
+                   placeholder="Page Title"
+                   class="form-control"/>
+        </fieldset>
+    </form>
+</div>
+
+<footer class="footer">
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>
