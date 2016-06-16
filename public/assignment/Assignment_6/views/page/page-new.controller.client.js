@@ -14,7 +14,7 @@
         init();
 
         function createPage(){
-            if(vm.name === undefined){
+            if(vm.name === "" || vm.name === undefined){
                 vm.error = "Name must have a Value";
                 return null;
             }

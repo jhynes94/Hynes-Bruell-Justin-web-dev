@@ -28,7 +28,7 @@
         init();
 
         function updatePage() {
-            if(vm.name === ""){
+            if(vm.name === undefined || vm.name === ""){
                 vm.error = "Name must have a Value";
                 return null;
             }

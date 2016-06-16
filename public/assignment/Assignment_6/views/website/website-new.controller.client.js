@@ -13,7 +13,7 @@
         init();
 
         function createWebsite(){
-            if(vm.name === undefined){
+            if(vm.name === undefined || vm.name === ""){
                 vm.error = "Name must have a Value";
                 return null;
             }

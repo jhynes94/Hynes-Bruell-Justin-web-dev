@@ -11,6 +11,14 @@
         vm.createNewUser = createNewUser;
 
         function login(username, password) {
+            if(username === "" || username === undefined){
+                vm.error = "Username must have a Value";
+                return null;
+            }
+            if(password === "" || password === undefined){
+                vm.error = "Password must have a Value";
+                return null;
+            }
             UserService
                 .login(username, password)
                 .then(function (response) {
@@ -30,6 +38,15 @@
         }
 
         function createNewUser(username, password, vPassword) {
+            if(username === "" || username === undefined){
+                vm.error = "Username must have a Value";
+                return null;
+            }
+            if(password === "" || password === undefined){
+                vm.error = "Password must have a Value";
+                return null;
+            }
+            
             if (!(password === vPassword)) {
                 vm.error = "Non-Matching Passwords";
                 return null;
