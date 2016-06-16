@@ -15,7 +15,18 @@ module.exports = function() {
     return api;
 
     function createUser(user) {
-        return User.create(user);
+        //return User.create(user);
+        
+        return User
+            .findOne({username: user.username})
+            .then(function (response) {
+                if(response === null){
+                    return User.create(user);
+                }
+                else{
+                    return 400;
+                }
+            });
     }
 
     function findUserById(userId) {

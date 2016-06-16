@@ -14,7 +14,8 @@
             updateUser: updateUser,
             deleteUser: deleteUser,
             logout: logout,
-            findUserByUsername: findUserByUsername
+            findUserByUsername: findUserByUsername,
+            register: register
         };
         return api;
 
@@ -65,6 +66,10 @@
 
         function logout(user) {
             return $http.post("/api/logout");
+        }
+
+        function register(user) {
+            return $http.post("/api/register", user);
         }
 
     }

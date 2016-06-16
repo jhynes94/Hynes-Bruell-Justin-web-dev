@@ -34,26 +34,16 @@
                 return null;
             }
 
-            //Check if User already exists
-            UserService.findUserByUsername(username)
+            var newUser = {username: username, password: password};
+            UserService.createUser(newUser)
                 .then(function (response) {
+                    var user = response.data;
                     console.log(response);
-                    if(response.data.username === username){
-                        vm.error = "UserName Already in Use";
-                        return null;
-                    }
-                    else{
-                        var newUser = {username: username, password: password};
-                        UserService.createUser(newUser)
-                            .then(function (response) {
-                                console.log(vm.error);
-                                login(username, password);
-                            }, function (error) {
-                                vm.error = "User Not Created, Error: " + error;
-                            })
-                    }
+                    $rootScope.currentUser = user;
+                    $location.url("/user/" + user._id);
+
                 }, function (error) {
-                    vm.error = "Error Seaching for User";
+                    vm.error = "UserName has been taken";
                 });
         }
     }

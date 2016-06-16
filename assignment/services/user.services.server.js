@@ -20,6 +20,7 @@ module.exports = function (app, models) {
     app.delete("/api/user/:userId", deleteUser);
     app.get("/api/userSearch/:userName", findUserByUsername);
     app.post('/api/logout', logout);
+    app.post ('/api/register', register);
 
     app.post("/api/login", passport.authenticate('wam'), login);
 
@@ -42,6 +43,25 @@ module.exports = function (app, models) {
                     done(err, null);
                 }
             );
+    }
+
+    function register (req, res) {
+        var user = req.body;
+        userModel
+            .createUser(user)
+            .then(
+            function(user){
+                if(user){
+                    req.login(user, function(err) {
+                        if(err) {
+                            res.status(400).send(err);
+                        } else {
+                            res.json(user);
+                        }
+                    });
+                }
+            }
+        );
     }
 
     function localStrategy(username, password, done) {
@@ -78,7 +98,12 @@ module.exports = function (app, models) {
             .createUser(newUser)
             .then(
                 function(user) {
-                    res.json(user);
+                    if(user === 400){
+                        res.status(400).send("Username " + newUser.username + " is already in use");
+                    }
+                    else {
+                        res.json(user);
+                    }
                 },
                 function(error) {
                     res.status(400).send("Username " + newUser.username + " is already in use");
