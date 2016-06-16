@@ -21,6 +21,12 @@
         <a ng-click="model.login(username, password)" class="btn btn-block btn-primary" role="button">Login</a>
     </fieldset>
     <fieldset class="form-group">
+        <a href="/auth/facebook" class="btn btn-primary btn-block">
+            <span class="fa fa-facebook"></span>
+            Facebook
+        </a>
+    </fieldset>
+    <fieldset class="form-group">
         <a href="#/register" class="btn btn-block btn-success" role="button">Register</a>
     </fieldset>
     <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
