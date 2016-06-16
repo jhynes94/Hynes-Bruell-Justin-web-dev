@@ -19,6 +19,7 @@ module.exports = function (app, models) {
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
     app.get("/api/userSearch/:userName", findUserByUsername);
+    app.post('/api/logout', logout);
 
     app.post("/api/login", passport.authenticate('wam'), login);
 
@@ -63,6 +64,11 @@ module.exports = function (app, models) {
     function login(req, res) {
         var user = req.user;
         res.json(user);
+    }
+
+    function logout(req, res) {
+        req.logOut();
+        res.send(200);
     }
 
     function createUser(req, res) {

@@ -13,6 +13,7 @@
             getUsers: getUsers,
             updateUser: updateUser,
             deleteUser: deleteUser,
+            logout: logout,
             findUserByUsername: findUserByUsername
         };
         return api;
@@ -60,6 +61,10 @@
                 password: password
             };
             return $http.post(url, user);
+        }
+
+        function logout(user) {
+            return $http.post("/api/logout");
         }
 
     }
