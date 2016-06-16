@@ -7,7 +7,7 @@
 
         var api = {
             createUser: createUser,
-            findUserByUsernameAndPassword: findUserByCredentials,
+            login: login,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
             getUsers: getUsers,
@@ -51,6 +51,15 @@
         function findUserByUsername(userName){
             var url = "/api/userSearch/" + userName;
             return $http.get(url);
+        }
+
+        function login(username, password) {
+            var url = "/api/login";
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, user);
         }
 
     }
