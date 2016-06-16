@@ -33,9 +33,9 @@ module.exports = function (app, models) {
         }));
 
     var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+        clientID     : 138474376573030,
+        clientSecret : 'ae59a3a862812b17ae665a3fed040e05',
+        callbackURL  : 'auth/facebook/callback'
     };
 
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));

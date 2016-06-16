@@ -10,7 +10,7 @@ var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 
 app.use(session({
-    secret: 'justinhynes',
+    secret:  'asdcasdbas',
     resave: true,
     saveUninitialized: true
 }));
