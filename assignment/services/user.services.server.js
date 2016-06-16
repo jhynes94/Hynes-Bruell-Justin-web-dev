@@ -21,12 +21,17 @@ module.exports = function (app, models) {
     app.get("/api/userSearch/:userName", findUserByUsername);
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
+    app.get ('/api/loggedin', loggedin);
 
     app.post("/api/login", passport.authenticate('wam'), login);
 
     passport.use('wam', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
+
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
 
     function serializeUser(user, done) {
         done(null, user);
