@@ -17,10 +17,11 @@
                     console.log(response);
                     var user = response.data;
                     if(user === null){
-                        $rootScope.currentUser = user;
+                        //$rootScope.currentUser = user;
                         vm.error = "User not found";
                     }
                     else{
+                        $rootScope.currentUser = user;
                         $location.url("/user/" + user._id);
                     }
                 }, function (error) {
@@ -39,8 +40,10 @@
                 .then(function (response) {
                     var user = response.data;
                     console.log(response);
+                    console.log(user._id);
                     $rootScope.currentUser = user;
-                    $location.url("/user/" + user._id);
+                    login(username, password);
+                    //$location.url("/user/" + user._id);
 
                 }, function (error) {
                     vm.error = "UserName has been taken";
