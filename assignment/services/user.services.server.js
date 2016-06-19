@@ -8,6 +8,12 @@ module.exports = function (app, models) {
 
     var userModel = models.userModel;
 
+    var facebookConfig = {
+        clientID     : 138474376573030,
+        clientSecret : 'ae59a3a862812b17ae665a3fed040e05',
+        callbackURL  : 'auth/facebook/callback'
+    };
+
     // var users = [
     //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com" },
     //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -33,25 +39,38 @@ module.exports = function (app, models) {
             failureRedirect: '/#/login'
         }));
 
-    var facebookConfig = {
-        clientID     : 138474376573030,
-        clientSecret : 'ae59a3a862812b17ae665a3fed040e05',
-        callbackURL  : 'auth/facebook/callback'
-    };
-
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+    passport.use('wam', new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
 
 
 
     function facebookStrategy(token, refreshToken, profile, done) {
         console.log(profile);
-        userModel.findUserByFacebookId(profile.id)
+        console.log("Facebook Strategy");
+
+        userModel
+            .findUserByFacebookId(profile.id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    var user = {};
+                    user.username = profile.id;
+                    user.firstName = profile.displayName;
+                    user.facebook.id = profile.id;
+                    userModel
+                        .createUser(user)
+                        .then(
+                            function(user){
+                                done(null, user);
+                            }
+                        );
+                }
+            );
     }
-
-
-    passport.use('wam', new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
 
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
