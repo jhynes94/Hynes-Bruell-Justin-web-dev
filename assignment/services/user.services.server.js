@@ -33,7 +33,7 @@ module.exports = function (app, models) {
     app.post("/api/login", passport.authenticate('wam'), login);
 
     app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-    app.get('/auth/facebook/callback',
+    app.get('/facebook/callback',
         passport.authenticate('facebook', {
             successRedirect: '/#/user',
             failureRedirect: '/#/login'
