@@ -15,10 +15,14 @@
             deleteUser: deleteUser,
             logout: logout,
             findUserByUsername: findUserByUsername,
+            checkLoggedin: checkLoggedin,
             register: register
         };
         return api;
 
+        function checkLoggedin() {
+            return $http.get("/api/loggedin");
+        }
 
         function updateUser(id, newUser) {
             var url = "/api/user/"+id;

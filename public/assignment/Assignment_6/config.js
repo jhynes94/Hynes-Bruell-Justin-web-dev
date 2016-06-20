@@ -5,20 +5,34 @@
 
     function Config($routeProvider) {
 
-        function checkLoggedin($q, $timeout, $http, $location, $rootScope) {
+        function checkLoggedin(UserService, $q, $location, $rootScope) {
+
             var deferred = $q.defer();
-            $http.get('/api/loggedin').success(function(user) {
-                $rootScope.errorMessage = null;
-                if (user !== '0') {
-                    $rootScope.currentUser = user;
-                    deferred.resolve();
-                } else {
-                    deferred.reject();
-                    $location.url('/');
-                }
-            });
+
+            UserService
+                .checkLoggedin()
+                .then(
+                    function(response) {
+                        var user = response.data;
+                        console.log(user);
+                        if(user == '0') {
+                            deferred.reject();
+                            $rootScope.currentUser = null;
+                            $location.url("/login")
+                        } else {
+                            $rootScope.currentUser = user;
+                            deferred.resolve();
+                        }
+                    },
+                    function(err) {
+                        console.log(err);
+                        $rootScope.currentUser = null;
+                        deferred.reject();
+                    }
+                );
+
             return deferred.promise;
-        };
+        }
 
         $routeProvider
             .when("/login", {
