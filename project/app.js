@@ -1,6 +1,8 @@
 module.exports = function(app) {
     
-    var userService = require("./services/user.services.server")(app);
+    var models = require("./models/models.js")();
+
+    var userService = require("./services/user.services.server")(app, models);
 
     //Call and Responce Basic
     app.get("/hiker/:message", function(req, res) {
