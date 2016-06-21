@@ -7,50 +7,73 @@
 
         var api = {
             createUser: createUser,
-            findUserByUsernameAndPassword: findUserByCredentials,
+            login: login,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
-            findUserByUsername: findUserByUsername,
+            getUsers: getUsers,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            logout: logout,
+            findUserByUsername: findUserByUsername,
+            checkLoggedin: checkLoggedin,
+            register: register
         };
         return api;
 
+        function checkLoggedin() {
+            return $http.get("/hike/loggedin");
+        }
 
         function updateUser(id, newUser) {
-            var url = "/api/user/"+id;
+            var url = "/hike/user/"+id;
             return $http.put(url, newUser);
         }
 
         function createUser(user) {
             //var data = {username: user.username, password: user.password};
-            var url = "/api/user";
+            var url = "/hike/user";
             return $http.post(url, user);
         }
         
         function deleteUser(id) {
-            var url = "/api/user/"+id;
+            var url = "/hike/user/"+id;
             console.log("Delete Account:" + id);
             return $http.delete(url);
         }
     
-        //TODO Update this
-        function findUserByUsername(username) {
-            for (var i in users) {
-                if (users[i].username === username) {
-                    return users[i];
-                }
-            }
-            return null;
+        function getUsers() {
+            var url = "/hike/user";
+            return $http.get(url);
         }
 
         function findUserByCredentials(username, password) {
-            var url = "/api/user?username="+username+"&password="+password;
+            var url = "/hike/user?username="+username+"&password="+password;
             return $http.get(url);
         }
         function findUserById(id) {
-            var url = "/api/user/" + id;
+            var url = "/hike/user/" + id;
             return $http.get(url);
+        }
+        function findUserByUsername(userName){
+            var url = "/hike/userSearch/" + userName;
+            return $http.get(url);
+        }
+
+        function login(username, password) {
+            var url = "/hike/login";
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, user);
+        }
+
+        function logout(user) {
+            return $http.post("/hike/logout");
+        }
+
+        function register(user) {
+            return $http.post("/hike/register", user);
         }
 
     }

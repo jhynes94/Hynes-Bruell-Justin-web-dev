@@ -1,8 +1,7 @@
-module.exports = function() {
+module.exports = function(projectDB) {
 
-    var mongoose = require("mongoose");
     var UserSchema = require("./user.schema.server")();
-    var User = mongoose.model("Hiker", UserSchema);
+    var User = projectDB.model("Hiker", UserSchema);
 
     var api = {
         createUser: createUser,
