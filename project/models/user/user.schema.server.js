@@ -14,7 +14,7 @@ module.exports = function() {
             id:    String,
             token: String
         }
-    }, {collection: "assignment.user"});
+    }, {collection: "project.user"});
 
     return UserSchema
 };

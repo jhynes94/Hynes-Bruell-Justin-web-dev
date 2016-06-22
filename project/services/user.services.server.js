@@ -14,6 +14,13 @@ module.exports = function (app, models) {
         callbackURL  : '/auth/facebook/callback'
     };
 
+    // var users = [
+    //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com" },
+    //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+    //     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+    //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+    // ];
+
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
             successRedirect: '/assignment/Assignment_6/#/user',
@@ -118,7 +125,13 @@ module.exports = function (app, models) {
             .findUserByUsername(username)
             .then(
                 function(user) {
-                    if(user.username === username && bcrypt.compareSync(password, user.password)) {
+                    var hashMatch = false;
+                    try {
+                        hashMatch = bcrypt.compareSync(password, user.password);
+                    } catch (error) {
+                        return (error, null);
+                    }
+                    if(user.username === username && hashMatch) {
                         return done(null, user);
                     } else {
                         return done(null, false);

@@ -2,7 +2,7 @@ module.exports = function() {
 
     var mongoose = require('mongoose');
 
-    var connectionString = 'mongodb://localhost/project/Hike';
+    var connectionString = 'mongodb://localhost/project/';
 
     if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
