@@ -67,6 +67,11 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/blog", {
+                templateUrl: "views/blog/blog-list.view.client.html",
+                controller: "BlogListController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/login"
             });
