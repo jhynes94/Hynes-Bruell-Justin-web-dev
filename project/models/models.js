@@ -15,9 +15,11 @@ module.exports = function() {
     var projectDB = mongoose.createConnection(connectionString);
 
     var userModel = require("./user/user.model.server")(projectDB);
+    var blogModel = require("./blog/blog.model.server")(projectDB);
 
     var models = {
-        userModel: userModel
+        userModel: userModel,
+        blogModel: blogModel
     };
 
     return models;
