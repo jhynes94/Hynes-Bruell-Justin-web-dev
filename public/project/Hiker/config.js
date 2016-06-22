@@ -8,12 +8,14 @@
         function checkLoggedin(UserService, $q, $location, $rootScope) {
 
             var deferred = $q.defer();
+            console.log("Attempting to login using Client Service");
 
             UserService
                 .checkLoggedin()
                 .then(
                     function(response) {
                         var user = response.data;
+                        console.log("Client Service Responce:");
                         console.log(user);
                         if(user == '0') {
                             deferred.reject();

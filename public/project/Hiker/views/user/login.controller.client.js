@@ -19,6 +19,7 @@
                 vm.error = "Password must have a Value";
                 return null;
             }
+            console.log("Attempting to log in");
             UserService
                 .login(username, password)
                 .then(function (response) {

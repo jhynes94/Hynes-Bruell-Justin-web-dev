@@ -1,31 +1,10 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var bcrypt = require("bcrypt-nodejs");
-
 module.exports = function (app, models) {
 
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    var bcrypt = require("bcrypt-nodejs");
 
     var userModel = models.userModel;
-
-    var facebookConfig = {
-        clientID     : 138474376573030,
-        clientSecret : 'ae59a3a862812b17ae665a3fed040e05',
-        callbackURL  : '/auth/facebook/callback'
-    };
-
-    // var users = [
-    //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com" },
-    //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    //     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    // ];
-
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/assignment/Assignment_6/#/user',
-            failureRedirect: '/assignment/Assignment_6/#/login'
-        }));
 
     app.post("/hike/user", createUser);
     app.get("/hike/user", getUsers);
@@ -34,118 +13,53 @@ module.exports = function (app, models) {
     app.delete("/hike/user/:userId", deleteUser);
     app.get("/hike/userSearch/:userName", findUserByUsername);
     app.post('/hike/logout', logout);
-    app.post ('/hike/register', register);
     app.get ('/hike/loggedin', loggedin);
-    app.post("/hike/login", passport.authenticate('wam'), login);
-
-    app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    app.post("/hike/login", login);
 
 
-
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-    passport.use('wam', new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
-
-
-
-    function facebookStrategy(token, refreshToken, profile, done) {
-        var id = profile.id;
-        userModel
-            .findUserByFacebookId(id)
-            .then(
-                function(user) {
-                    if(user) {
-                        return done(null, user);
-                    } else {
-                        var user = {
-                            username: profile.displayName.replace(/ /g, ''),
-                            facebook: {
-                                id: profile.id,
-                                displayName: profile.displayName
-                            }
-                        }
-                        return userModel
-                            .createUser(user);
-                    }
-                }
-            )
-            .then(
-                function (user) {
-                    return done(null, user);
-                }
-            );
-    }
 
     function loggedin(req, res) {
+        console.log("loggedIn ATTEMPT!");
+
+        var thingsICanLog = [];
+        for (var key in req) {
+            thingsICanLog.push(key);
+        }
+        console.log(JSON.stringify(thingsICanLog));
+        
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
-    function serializeUser(user, done) {
-        done(null, user);
-    }
+    function login(req, res) {
+        var newUser = req.body;
+        var username = newUser.username;
+        var password = newUser.password;
+        //username = "hike2";
 
-    function deserializeUser(user, done) {
-        userModel
-            .findUserById(user._id)
-            .then(
-                function(user){
-                    done(null, user);
-                },
-                function(err){
-                    done(err, null);
-                }
-            );
-    }
-
-    //OLD VERSION DELETE!!!
-    function register (req, res) {
-        var user = req.body;
-        user.password = bcrypt.hashSync(user.password);
-
-        userModel
-            .createUser(user)
-            .then(
-                function(user){
-                    if(user){
-                        req.login(user, function(err) {
-                            if(err) {
-                                res.status(400).send(err);
-                            } else {
-                                res.json(user);
-                            }
-                        });
-                    }
-                }
-            );
-    }
-
-    function localStrategy(username, password, done) {
         userModel
             .findUserByUsername(username)
             .then(
                 function(user) {
+                    console.log('USER: ' + JSON.stringify(user));
                     var hashMatch = false;
                     try {
                         hashMatch = bcrypt.compareSync(password, user.password);
                     } catch (error) {
-                        return (error, null);
+                        res.json(user);
                     }
+                    console.log('HASH MATCH: ' + hashMatch);
                     if(user.username === username && hashMatch) {
-                        return done(null, user);
+                        console.log('RETURN USER');
+                        res.json(user);
+                        //return done(null, user);
                     } else {
-                        return done(null, false);
+                        res.json(user);
                     }
                 },
                 function(err) {
-                    if (err) { return done(err); }
+                    if (err) { res.json(err); }
                 }
             );
-    }
-
-    function login(req, res) {
-        var user = req.user;
-        res.json(user);
     }
 
     function logout(req, res) {

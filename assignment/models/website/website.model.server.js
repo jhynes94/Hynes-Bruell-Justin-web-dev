@@ -1,8 +1,7 @@
-module.exports = function() {
+module.exports = function(assignDB) {
 
-    var mongoose = require("mongoose");
     var WebsiteSchema = require("./website.schema.server")();
-    var Website = mongoose.model("Website", WebsiteSchema);
+    var Website = assignDB.model("Website", WebsiteSchema);
 
     var api = {
         createWebsite: createWebsite,

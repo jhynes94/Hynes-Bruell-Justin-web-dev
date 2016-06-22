@@ -1,9 +1,9 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var bcrypt = require("bcrypt-nodejs");
-
 module.exports = function (app, models) {
+
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    var FacebookStrategy = require('passport-facebook').Strategy;
+    var bcrypt = require("bcrypt-nodejs");
 
 
     var userModel = models.userModel;
@@ -125,7 +125,16 @@ module.exports = function (app, models) {
             .findUserByUsername(username)
             .then(
                 function(user) {
-                    if(user.username === username && bcrypt.compareSync(password, user.password)) {
+                    console.log('USER: ' + JSON.stringify(user));
+                    var hashMatch = false;
+                    try {
+                        hashMatch = bcrypt.compareSync(password, user.password);
+                    } catch (error) {
+                        return (error, null);
+                    }
+                    console.log('HASH MATCH: ' + hashMatch);
+                    if(user.username === username && hashMatch) {
+                        console.log('RETURN USER');
                         return done(null, user);
                     } else {
                         return done(null, false);

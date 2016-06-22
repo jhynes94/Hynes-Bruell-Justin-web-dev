@@ -21,6 +21,7 @@
         return api;
 
         function checkLoggedin() {
+            console.log('CHECKING LOGIN STATUS');
             return $http.get("/hike/loggedin");
         }
 

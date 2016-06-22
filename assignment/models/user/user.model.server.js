@@ -1,8 +1,7 @@
-module.exports = function() {
+module.exports = function(assignDB) {
 
-    var mongoose = require("mongoose");
     var UserSchema = require("./user.schema.server")();
-    var User = mongoose.model("User", UserSchema);
+    var User = assignDB.model("User", UserSchema);
 
     var api = {
         createUser: createUser,

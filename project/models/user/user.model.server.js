@@ -42,7 +42,8 @@ module.exports = function(projectDB) {
     }
 
     function findUserByUsername(username) {
-        return User.findOne({username: username});
+        var theUser = User.findOne({username: username});
+        return theUser;
     }
 
     function updateUser(id, newUser) {
