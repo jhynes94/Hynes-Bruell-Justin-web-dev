@@ -8,6 +8,7 @@
         vm.filtersHiker = filtersHiker;
         vm.filtersDrivers = filtersDrivers;
         vm.filtersRest = filtersRest;
+        vm.search = search;
 
         function init() {
             vm.uid = $routeParams["uid"];
@@ -42,6 +43,22 @@
 
         }
         init();
+
+        function search(query) {
+            console.log("Searching for: " + query);
+            BlogService
+                .search(query)
+                .then(function (response) {
+                    console.log(response.data);
+                    vm.posts = response.data;
+                    if(vm.filter == "Hiker"){
+                        filtersHiker();
+                    }
+                    if(vm.filter == "Driver"){
+                        filtersDrivers();
+                    }
+                });
+        }
 
 
         function filtersHiker() {

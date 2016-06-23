@@ -11,9 +11,15 @@
             DriversForHikers: DriversForHikers,
             HikersForDrivers: HikersForDrivers,
             updatePost: updatePost,
+            search: search,
             deletePost: deletePost  };
         return api;
 
+        function search(query) {
+            var url = "/hike/blog/search/" + query;
+            return $http.get(url);
+        }
+        
         function createPost(post) {
             var url = "/hike/blog/createPost";
             return $http.post(url, post);

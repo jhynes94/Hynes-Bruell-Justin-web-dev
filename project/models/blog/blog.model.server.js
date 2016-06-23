@@ -10,10 +10,17 @@ module.exports = function(assignDB) {
         DriversForHikers: DriversForHikers,
         HikersForDrivers: HikersForDrivers,
         updatePost: updatePost,
+        find: find,
         deletePost: deletePost
     };
     return api;
 
+
+    function find(query) {
+        console.log("Search for: " + query);
+        return Blog.find();
+    }
+    
     function createPost(userId, post) {
         post._user = userId;
         post.data = "NewPostToConfigure";

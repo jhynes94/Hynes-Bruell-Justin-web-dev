@@ -7,9 +7,62 @@ module.exports = function (app, models) {
     app.get("/hike/blog/:postId", getPostById);
     app.get("/hike/blog/DriversForHikers", DriversForHikers);
     app.get("/hike/blog/HikersForDrivers", HikersForDrivers);
+    app.get("/hike/blog/search/:query", find);
     app.put("/hike/blog/:postId", updatePost);
     app.delete("/hike/blog/:postId", deletePost);
-    
+
+    function find(req, res) {
+        var query = req.params["query"];
+        blogModel
+            .find(query)
+            .then(
+                function (posts) {
+
+                   // {destination: query}, {pickup: query}, {pickupTime: query}
+
+                    var postsToSend = [];
+                    for(var i in posts){
+                        if(posts[i].user === query){
+                            postsToSend.push(posts[i]);
+                            posts.splice(i, 1);
+                        }
+                    }
+                    for(var i in posts){
+                        if(posts[i].text === query){
+                            postsToSend.push(posts[i]);
+                            posts.splice(i, 1);
+                        }
+                    }
+                    for(var i in posts){
+                        if(posts[i].destination === query){
+                            postsToSend.push(posts[i]);
+                            posts.splice(i, 1);
+                        }
+                    }
+                    for(var i in posts){
+                        if(posts[i].pickup === query){
+                            postsToSend.push(posts[i]);
+                            posts.splice(i, 1);
+                        }
+                    }
+                    for(var i in posts){
+                        if(posts[i].pickupTime === query){
+                            postsToSend.push(posts[i]);
+                            posts.splice(i, 1);
+                        }
+                    }
+
+                    res.send(postsToSend);
+                },
+                function (error) {
+                    console.log("Seach Failed!!!");
+                    res.status(400).send(error);
+                }
+            );
+    }
+
+
+
     function createPost(req, res) {
         var oldPost = req.body;
         console.log(oldPost.type);

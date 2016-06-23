@@ -8,8 +8,8 @@
     <table class="table table-striped">
         <fieldset class="form-group">
             <div class="form-group">
-                <input ng-model="model.search" type="text" class="form-control" id="name" placeholder="Search Query">
-                <a ng-click="model.search()" class="btn btn-block btn-primary" role="button">Search!</a>
+                <input ng-model="model.searchQuery" type="text" class="form-control" id="name" placeholder="Search Query">
+                <a ng-click="model.search(model.searchQuery)" class="btn btn-block btn-primary" role="button">Search!</a>
             </div>
         </fieldset>
         <tbody ng-repeat="post in model.posts" ng-switch on="post.type">
