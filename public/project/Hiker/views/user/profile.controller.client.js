@@ -22,6 +22,12 @@
                         vm.user = response.data;
                     })
             }
+
+
+            if (id === undefined || id === null){
+                console.log("Redirecting to Proper Address for user: "  + vm.user._id);
+                $location.url("/user/" + vm.user._id);
+            }
         }
         init();
 

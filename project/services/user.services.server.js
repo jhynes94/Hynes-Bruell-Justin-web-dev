@@ -75,6 +75,7 @@ module.exports = function (app, models) {
                             firstName: profile.name.givenName,
                             lastName:  profile.name.familyName,
                             email:     email,
+                            type: "HIKER",
                             google: {
                                 id:    profile.id,
                                 token: token,
@@ -120,6 +121,7 @@ module.exports = function (app, models) {
                     } else {
                         var user = {
                             username: profile.displayName.replace(/ /g, ''),
+                            type: "HIKER",
                             facebook: {
                                 id: profile.id,
                                 displayName: profile.displayName
