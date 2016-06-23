@@ -14,7 +14,7 @@
             deletePost: deletePost  };
         return api;
 
-        function createPost(pageId, post) {
+        function createPost(post) {
             var url = "/hike/blog/createPost";
             return $http.post(url, post);
         }

@@ -1,2 +1,31 @@
-<h1>New Post!</h1>
-{{model.uid}}
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <h3>New Post</h3>
+    <div class="Check_Icon"><a ng-click="model.createPost()"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
+</nav>
+
+
+<div class="container">
+    <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
+    <form method="post"
+          action="/path/to/form/service">
+        <fieldset class="form-group">
+
+            <div class="form-group">
+                <label for="name">Type</label>
+                <input ng-model="model.type" type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="comment">Application Description</label>
+                <textarea ng-model="model.text" class="form-control" rows="5" placeholder="Description" id="comment"></textarea>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<footer class="footer">
+    <a href="../user/profile.html"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>

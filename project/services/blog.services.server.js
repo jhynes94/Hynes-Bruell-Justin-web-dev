@@ -18,7 +18,7 @@ module.exports = function (app, models) {
             .createPost(oldPost._user, oldPost)
             .then(
                 function (post) {
-                    /*post.data = null;
+                    post.data = null;
                     blogModel
                         .updatePost(post._id, post)
                         .then(
@@ -27,8 +27,8 @@ module.exports = function (app, models) {
                             },
                             function (error) {
                             }
-                        );*/
-                    res.send(post);
+                        );
+                    //res.send(post);
                 },
                 function (error) {
                     res.status(400).send("Creation Error");
