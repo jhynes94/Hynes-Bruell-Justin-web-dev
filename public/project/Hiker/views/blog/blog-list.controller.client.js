@@ -11,6 +11,7 @@
         function init() {
             vm.uid = $routeParams["uid"];
             vm.type = $routeParams["type"];
+            vm.filter = $routeParams["filter"];
 
             BlogService
                 .getAllPosts()
@@ -18,6 +19,13 @@
                     console.log(response.data);
                     vm.posts = response.data;
                 });
+
+            if(vm.filter == "Hiker"){
+
+            }
+            if(vm.filter == "Driver"){
+
+            }
             /*
             WidgetService
                 .findWidgetsByPageId(vm.pid)
@@ -40,6 +48,15 @@
         function getTrustedHtml(widget) {
             var html = $sce.trustAsHtml(widget.text);
             return html;
+        }
+
+
+        function filtersHiker() {
+
+        }
+
+        function filtersDrivers() {
+
         }
     }
 })();

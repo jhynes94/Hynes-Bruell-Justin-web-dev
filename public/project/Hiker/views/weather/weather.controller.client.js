@@ -21,8 +21,8 @@
                 .getWeather(LonLat)
                 .then(function (response) {
                     console.log(response.data);
-                    vm.weather = response.data;
-                    if (vm.weather === null) {
+                    vm.Pemi = response.data;
+                    if (vm.Pemi === null) {
                         //$rootScope.currentUser = user;
                         vm.error = "Weather Not found";
                     }
@@ -32,6 +32,47 @@
                 }, function (error) {
                     vm.error = "Error: " + error;
                 });
+
+
+            //Mt Washington
+            var LonLat = "44.270482,-71.303263";
+
+            WeatherService
+                .getWeather(LonLat)
+                .then(function (response) {
+                    console.log(response.data);
+                    vm.Washington = response.data;
+                    if (vm.Washington === null) {
+                        //$rootScope.currentUser = user;
+                        vm.error = "Weather Not found";
+                    }
+                    else {
+
+                    }
+                }, function (error) {
+                    vm.error = "Error: " + error;
+                });
+
+
+            //Waterville Vally
+            var LonLat = "43.961709,-71.495186";
+
+            WeatherService
+                .getWeather(LonLat)
+                .then(function (response) {
+                    console.log(response.data);
+                    vm.Waterville = response.data;
+                    if (vm.Waterville === null) {
+                        //$rootScope.currentUser = user;
+                        vm.error = "Weather Not found";
+                    }
+                    else {
+
+                    }
+                }, function (error) {
+                    vm.error = "Error: " + error;
+                });
+            
         }
 
         init();
