@@ -3,39 +3,21 @@
         .module("WebAppMaker")
         .controller("WeatherController", WeatherController);
 
-    function WeatherController($routeParams, WidgetService, $sce) {
+    function WeatherController($routeParams, WeatherService, $sce) {
         var vm = this;
-        vm.getTrustedUrl = getTrustedUrl;
-        vm.getTrustedHtml = getTrustedHtml;
+        vm.weatherFunction = weatherFunction;
 
         function init() {
 
             //https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
-            vm.uid = $routeParams["uid"];
+            /*vm.uid = $routeParams["uid"];
             vm.wid = $routeParams["wid"];
-            vm.pid = $routeParams["pid"];
-            WidgetService
-                .findWidgetsByPageId(vm.pid)
-                .then(function(response) {
-                    console.log(response.data);
-                    vm.widgets = response.data;
-                });
-            console.log(vm.widgets);
-            
-            $( "#sortable" ).sortable({ axis: 'y', handle: '.fa-bars', placeholder: "ui-state-highlight"}).disableSelection();
+            vm.pid = $routeParams["pid"];*/
         }
         init();
 
-        function getTrustedUrl(widget){
-            var urlParts = widget.url.split("/");
-            var id = urlParts[urlParts.length -1];
-            var url = "https://www.youtube.com/embed/" + id;
-            return $sce.trustAsResourceUrl(url);
-        }
-
-        function getTrustedHtml(widget) {
-            var html = $sce.trustAsHtml(widget.text);
-            return html;
+        function weatherFunction(widget) {
+            return null;
         }
     }
 })();

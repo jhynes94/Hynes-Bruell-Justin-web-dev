@@ -73,6 +73,11 @@
                 controller: "BlogListController",
                 controllerAs: "model"
             })
+            .when("/weather", {
+                templateUrl: "views/weather/weather.view.client.html",
+                controller: "WeatherController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/blog/:type", {
                 templateUrl: "views/blog/blog-list.view.client.html",
                 controller: "BlogListController",
