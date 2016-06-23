@@ -7,7 +7,7 @@ module.exports = function() {
         firstName: String,
         lastName: String,
         email: String,
-        websites: [],
+        type: String,
         dateCreate: {type: Date, default: Date.now},
         dateUpdated: Date,
         facebook: {

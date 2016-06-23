@@ -9,6 +9,8 @@
 
         vm.login = login;
         vm.createNewUser = createNewUser;
+        vm.HIKER = "HIKER";
+        vm.DRIVER = "DRIVER";
 
         function login(username, password) {
             if(username === "" || username === undefined){
@@ -38,7 +40,7 @@
                 })
         }
 
-        function createNewUser(username, password, vPassword) {
+        function createNewUser(username, password, vPassword, type) {
             if(username === "" || username === undefined){
                 vm.error = "Username must have a Value";
                 return null;
@@ -54,6 +56,8 @@
             }
 
             var newUser = {username: username, password: password};
+            newUser.type = type;
+            console.log("Type is: " + type);
             UserService.createUser(newUser)
                 .then(function (response) {
                     var user = response.data;

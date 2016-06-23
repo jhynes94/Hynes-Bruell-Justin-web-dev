@@ -54,6 +54,7 @@ module.exports = function(projectDB) {
                 username: newUser.username,
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
+                type: newUser.type,
                 email: newUser.email
             }
             }
