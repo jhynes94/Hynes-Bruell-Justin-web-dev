@@ -1,7 +1,6 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="Left_Icon"><a href="#/user/{{model.uid}}/blog/{{model.type}}"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
     <h3>New {{model.type}} Post</h3>
-    <div class="Check_Icon"><a ng-click="model.createPost()"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
 </nav>
 
 
@@ -28,19 +27,19 @@
         <fieldset class="form-group">
             <div class="form-group">
                 <label for="name">Departure Time</label>
-                <input ng-model="model.Somthin" type="text" class="form-control" id="name" placeholder="Name">
+                <input ng-model="model.pickupTime" type="text" class="form-control" id="name" placeholder="Name">
             </div>
         </fieldset>
         <fieldset class="form-group">
             <div class="form-group">
                 <label for="name">Departure Location</label>
-                <input ng-model="model.Somthin" type="text" class="form-control" id="name" placeholder="Name">
+                <input ng-model="model.pickup" type="text" class="form-control" id="name" placeholder="Name">
             </div>
         </fieldset>
         <fieldset class="form-group">
             <div class="form-group">
                 <label for="name">Destination</label>
-                <input ng-model="model.Somthin" type="text" class="form-control" id="name" placeholder="Name">
+                <input ng-model="model.destination" type="text" class="form-control" id="name" placeholder="Name">
             </div>
         </fieldset>
         <fieldset class="form-group">
@@ -50,6 +49,11 @@
             </div>
         </fieldset>
     </form>
+
+
+    <fieldset class="form-group">
+        <a ng-click="model.createPost()" class="btn btn-block btn-primary" role="button">Submit</a>
+    </fieldset>
 </div>
 
 <footer class="footer">

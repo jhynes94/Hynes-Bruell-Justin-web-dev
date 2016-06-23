@@ -76,7 +76,11 @@ module.exports = function(assignDB) {
                 text: post.text,
                 url: post.url,
                 width: post.width,
-                height: post.height
+                height: post.height,
+                user: post.user,
+                destination: post.destination,
+                pickup: post.pickup,
+                pickupTime: post.pickupTime
             }
             }
         );

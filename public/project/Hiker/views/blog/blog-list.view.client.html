@@ -10,6 +10,7 @@
         <tr ng-switch-when="HIKER">
             <td>
                 <h1>Hiker</h1>
+                <h2>{{post.user}}</h2>
                 <h3>{{post.text}}</h3>
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
             </td>
@@ -17,6 +18,7 @@
         <tr ng-switch-when="DRIVER">
             <td>
                 <h1>Driver</h1>
+                <h2>{{post.user}}</h2>
                 <h3>{{post.text}}</h3>
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
             </td>
