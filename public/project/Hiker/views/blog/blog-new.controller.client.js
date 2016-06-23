@@ -29,7 +29,7 @@
 
             BlogService.createPost(post)
                 .then(function(response) {
-                    $location.url("/user/" + vm.uid + "/blog");
+                    $location.url("/user/" + vm.uid + "/blog/" + vm.type);
                 });
         }
     }

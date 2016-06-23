@@ -1,24 +1,51 @@
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="Left_Icon"><a href="#/user/{{model.uid}}/website"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
-    <h3>New Post</h3>
+    <div class="Left_Icon"><a href="#/user/{{model.uid}}/blog/{{model.type}}"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a></div>
+    <h3>New {{model.type}} Post</h3>
     <div class="Check_Icon"><a ng-click="model.createPost()"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a></div>
 </nav>
 
 
-<div class="container">
+<div class="container" ng-switch on="model.type">
     <div ng-if="model.error" class="alert alert-danger">{{model.error}}</div>
-    <form method="post"
-          action="/path/to/form/service">
+
+    <form method="post" action="/path/to/form/service" ng-switch-when="HIKER">
         <fieldset class="form-group">
             <div class="form-group">
-                <label for="name">Type</label>
-                <input ng-model="model.type" type="text" class="form-control" id="name" placeholder="Name">
+                <label for="name">Ideal Destination</label>
+                <input ng-model="model.Somthin" type="text" class="form-control" id="name" placeholder="Name">
             </div>
         </fieldset>
-
         <fieldset class="form-group">
             <div class="form-group">
-                <label for="comment">Application Description</label>
+                <label for="comment">Details on Trip</label>
+                <textarea ng-model="model.text" class="form-control" rows="5" placeholder="Description" id="comment"></textarea>
+            </div>
+        </fieldset>
+    </form>
+
+
+    <form method="post" action="/path/to/form/service" ng-switch-when="DRIVER">
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Departure Time</label>
+                <input ng-model="model.Somthin" type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Departure Location</label>
+                <input ng-model="model.Somthin" type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="name">Destination</label>
+                <input ng-model="model.Somthin" type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="comment">Details on Trip</label>
                 <textarea ng-model="model.text" class="form-control" rows="5" placeholder="Description" id="comment"></textarea>
             </div>
         </fieldset>

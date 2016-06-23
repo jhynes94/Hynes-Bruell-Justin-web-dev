@@ -130,7 +130,9 @@ a:active {
 }
 
 td {
-    background-color: white;
+    background-color: dimgray;
+    color: white;
+    text-align: center;
 }
 
 tr {
