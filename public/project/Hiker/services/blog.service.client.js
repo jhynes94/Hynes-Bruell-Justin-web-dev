@@ -5,31 +5,41 @@
     function BlogService($http) {
 
         var api = {
-            createWidget: createWidget,
-            findWidgetsByPageId: findWidgetsByPageId,
-            findWidgetById: findWidgetById,
-            updateWidget: updateWidget,
-            deleteWidget: deleteWidget        };
+            createPost: createPost,
+            getAllPosts: getAllPosts,
+            getPostById: getPostById,
+            DriversForHikers: DriversForHikers,
+            HikersForDrivers: HikersForDrivers,
+            updatePost: updatePost,
+            deletePost: deletePost  };
         return api;
 
-        function createWidget(pageId, widget) {
-            var url = "/hike/page/" + pageId + "/widget/";
-            return $http.post(url, widget);
+        function createPost(pageId, post) {
+            var url = "/hike/blog/createPost";
+            return $http.post(url, post);
         }
-        function findWidgetsByPageId(pageId) {
-            var url = "/hike/page/" + pageId + "/widget/";
+        function getAllPosts() {
+            var url = "/hike/blog/getPosts";
             return $http.get(url);
         }
-        function findWidgetById(widgetId) {
-            var url = "/hike/widget/" + widgetId;
+        function getPostById(postId) {
+            var url = "/hike/blog/" + postId;
             return $http.get(url);
         }
-        function updateWidget(widgetId, widget) {
-            var url = "/hike/widget/" + widgetId;
-            return $http.put(url, widget);
+        function DriversForHikers() {
+            var url = "/hike/blog/DriversForHikers";
+            return $http.get(url);
         }
-        function deleteWidget(widgetId) {
-            var url = "/hike/widget/" + widgetId;
+        function HikersForDrivers() {
+            var url = "/hike/blog/HikersForDrivers";
+            return $http.get(url);
+        }
+        function updatePost(postId, post) {
+            var url = "/hike/blog/" + postId;
+            return $http.put(url, post);
+        }
+        function deletePost(postId) {
+            var url = "/hike/blog/" + postId;
             return $http.delete(url);
         }
     }

@@ -11,7 +11,12 @@
         function init() {
             vm.uid = $routeParams["uid"];
 
-            
+            BlogService
+                .getAllPosts()
+                .then(function (response) {
+                    console.log(response.data);
+                    vm.posts = response.data;
+                });
             /*
             WidgetService
                 .findWidgetsByPageId(vm.pid)
