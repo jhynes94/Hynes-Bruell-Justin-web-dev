@@ -68,13 +68,19 @@
                 controllerAs: "model",
                 resolve: { "loggedin": checkLoggedin }
             })
-            .when("/user/:uid/blog", {
+            .when("/user/:uid/blog/:type", {
                 templateUrl: "views/blog/blog-list.view.client.html",
                 controller: "BlogListController",
                 controllerAs: "model",
                 resolve: { "loggedin": checkLoggedin }
             })
-            .when("/user/:uid/post", {
+            .when("/user/:uid/post/:type", {
+                templateUrl: "views/blog/blog-new.view.client.html",
+                controller: "NewBlogController",
+                controllerAs: "model",
+                resolve: { "loggedin": checkLoggedin }
+            })
+            .when("/user/:uid/post/:type", {
                 templateUrl: "views/blog/blog-new.view.client.html",
                 controller: "NewBlogController",
                 controllerAs: "model",

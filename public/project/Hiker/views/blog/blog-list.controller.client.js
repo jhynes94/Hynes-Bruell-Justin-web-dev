@@ -10,6 +10,7 @@
 
         function init() {
             vm.uid = $routeParams["uid"];
+            vm.type = $routeParams["type"];
 
             BlogService
                 .getAllPosts()

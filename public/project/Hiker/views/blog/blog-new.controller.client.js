@@ -6,9 +6,11 @@
     function NewBlogController($routeParams, BlogService, $location) {
         var vm = this;
         vm.uid = $routeParams["uid"];
+        vm.type = $routeParams["type"];
         vm.createPost = createPost;
 
-        function init() { }
+        function init() {
+        }
         init();
 
         function createPost(){
@@ -29,21 +31,6 @@
                 .then(function(response) {
                     $location.url("/user/" + vm.uid + "/blog");
                 });
-            
-            /*
-            website.comment = vm.comment;
-            console.log("Comment: " + vm.comment);
-            website.name = vm.name;
-            console.log("Name: " + vm.name);
-            website.developerId = vm.uid;
-            console.log(vm.uid);
-            website._id = (Math.floor(Math.random()*90000) + 10000).toString();
-            console.log(website._id);
-            
-            WebsiteService.createWebsite(vm.uid, website)
-                .then(function(response) {
-                    $location.url("/user/" + vm.uid + "/website");
-                });*/
         }
     }
 })();
