@@ -6,8 +6,8 @@
     <table class="table table-striped">
         <fieldset class="form-group">
             <div class="form-group">
-                <input ng-model="model.search" type="text" class="form-control" id="name" placeholder="Search Query">
-                <a ng-click="model.search()" class="btn btn-block btn-primary" role="button">Search!</a>
+                <input ng-model="model.searchQuery" type="text" class="form-control" id="name" placeholder="Search Query">
+                <a ng-click="model.search(model.searchQuery)" class="btn btn-block btn-primary" role="button">Search!</a>
             </div>
         </fieldset>
         <tbody ng-repeat="post in model.posts" ng-switch on="post.type">
@@ -18,6 +18,7 @@
                 <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                 <h3>Details: {{post.text}}</h3>
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
+                <a  href="#/login" class="btn btn-block btn-primary" role="button">Invite</a>
             </td>
         </tr>
         <tr ng-switch-when="DRIVER">
@@ -27,6 +28,7 @@
                 <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                 <h3>Details: {{post.text}}</h3>
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
+                <a  href="#/login" class="btn btn-block btn-primary" role="button">Join</a>
             </td>
         </tr>
         </tbody>
