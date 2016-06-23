@@ -33,7 +33,7 @@
                     }
                     else{
                         $rootScope.currentUser = user;
-                        $location.url("/user/" + user._id);
+                        $location.url("/user/" + user._id + "/blog/" + user.type);
                     }
                 }, function (error) {
                     vm.error = "Error: " + error;
