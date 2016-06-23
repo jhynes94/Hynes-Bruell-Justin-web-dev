@@ -10,9 +10,14 @@ module.exports = function(projectDB) {
         findUserById: findUserById,
         updateUser: updateUser,
         deleteUser: deleteUser,
-        findUserByFacebookId: findUserByFacebookId
+        findUserByFacebookId: findUserByFacebookId,
+        findUserByGoogleId: findUserByGoogleId
     };
     return api;
+
+    function findUserByGoogleId(googleId) {
+        return User.findOne({'google.id': googleId});
+    }
 
     function findUserByFacebookId(facebookId) {
         return User.findOne({'facebook.id': facebookId});

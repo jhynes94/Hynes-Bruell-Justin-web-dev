@@ -10,6 +10,11 @@ module.exports = function() {
         type: String,
         dateCreate: {type: Date, default: Date.now},
         dateUpdated: Date,
+        google: {
+            id: String,
+            token: String,
+            displayName: String
+        },
         facebook: {
             id:    String,
             token: String
