@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <h3>Hike 4000</h3>
+</nav>
+
+<div class="container">
+    <table class="table table-striped">
+        <tbody ng-repeat="post in model.posts" ng-switch on="post.type">
+        <tr ng-switch-when="HIKER">
+            <td ng-switch="widget.size">
+                <h1>Hiker</h1>
+                <h3>{{post.text}}</h3>
+            </td>
+        </tr>
+        <tr ng-switch-when="DRIVER">
+            <td ng-switch="widget.size">
+                <h1>Driver</h1>
+                <h3>{{post.text}}</h3>
+            </td>
+        </tr>
+    </table>
+</div>
+<p></p>
+<footer class="footer">
+    <div class="pull-right">
+        <a href="../index.html"><i class="fa fa-home fa-2x"></i></a>
+    </div>
+</footer>

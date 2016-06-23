@@ -9,6 +9,8 @@
         vm.getTrustedHtml = getTrustedHtml;
 
         function init() {
+
+            //https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
             vm.uid = $routeParams["uid"];
             vm.wid = $routeParams["wid"];
             vm.pid = $routeParams["pid"];

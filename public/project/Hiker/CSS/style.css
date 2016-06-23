@@ -1,5 +1,5 @@
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: auto;
@@ -27,6 +27,7 @@ form {
 }
 
 .navbar-static-top {
+    top: 0;
     height: auto;
     color: dimgray;
     padding-left: 5%;
@@ -147,4 +148,8 @@ tr {
 .fa {
     color: black;
     padding-right: 20px;
+}
+
+.table {
+    margin-bottom: 70px;
 }
