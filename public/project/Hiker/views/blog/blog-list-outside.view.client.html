@@ -6,17 +6,20 @@
     <table class="table table-striped">
         <tbody ng-repeat="post in model.posts" ng-switch on="post.type">
         <tr ng-switch-when="HIKER">
-            <td ng-switch="widget.size">
+            <td>
                 <h1>Hiker</h1>
                 <h3>{{post.text}}</h3>
+                <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
             </td>
         </tr>
         <tr ng-switch-when="DRIVER">
-            <td ng-switch="widget.size">
+            <td>
                 <h1>Driver</h1>
                 <h3>{{post.text}}</h3>
+                <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
             </td>
         </tr>
+        </tbody>
     </table>
 </div>
 <p></p>

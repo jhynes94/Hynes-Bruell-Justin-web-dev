@@ -5,27 +5,32 @@
 
     function BlogListController($routeParams, BlogService, $sce) {
         var vm = this;
-        vm.getTrustedUrl = getTrustedUrl;
-        vm.getTrustedHtml = getTrustedHtml;
+        vm.filtersHiker = filtersHiker;
+        vm.filtersDrivers = filtersDrivers;
+        vm.filtersRest = filtersRest;
 
         function init() {
             vm.uid = $routeParams["uid"];
             vm.type = $routeParams["type"];
             vm.filter = $routeParams["filter"];
 
+            console.log(vm.filter);
+
             BlogService
                 .getAllPosts()
                 .then(function (response) {
                     console.log(response.data);
                     vm.posts = response.data;
+                    if(vm.filter == "Hiker"){
+                        filtersHiker();
+                    }
+                    if(vm.filter == "Driver"){
+                        filtersDrivers();
+                    }
                 });
 
-            if(vm.filter == "Hiker"){
 
-            }
-            if(vm.filter == "Driver"){
 
-            }
             /*
             WidgetService
                 .findWidgetsByPageId(vm.pid)
@@ -38,25 +43,49 @@
         }
         init();
 
-        function getTrustedUrl(widget){
-            var urlParts = widget.url.split("/");
-            var id = urlParts[urlParts.length -1];
-            var url = "https://www.youtube.com/embed/" + id;
-            return $sce.trustAsResourceUrl(url);
-        }
-
-        function getTrustedHtml(widget) {
-            var html = $sce.trustAsHtml(widget.text);
-            return html;
-        }
-
 
         function filtersHiker() {
-
+            console.log("filtersHiker");
+            for(var i in vm.posts){
+                if(vm.posts[i].type === "DRIVER"){
+                    vm.posts[i].type = "DRIVER2";
+                    console.log("Driver Found")
+                }
+            }
+            for(var i in vm.posts){
+                if(vm.posts[i].type === "HIKER2"){
+                    vm.posts[i].type = "HIKER";
+                }
+            }
         }
 
         function filtersDrivers() {
+            console.log("filtersDriver");
+            for(var i in vm.posts){
+                if(vm.posts[i].type === "HIKER"){
+                    vm.posts[i].type = "HIKER2";
+                    console.log("Hiker Found")
+                }
+            }
+            for(var i in vm.posts){
+                if(vm.posts[i].type === "DRIVER2"){
+                    vm.posts[i].type = "DRIVER";
+                }
+            }
+        }
 
+        function filtersRest() {
+            console.log("Filter Reset");
+            for(var i in vm.posts){
+                if(vm.posts[i].type === "HIKER2"){
+                    vm.posts[i].type = "HIKER";
+                }
+            }
+            for(var i in vm.posts){
+                if(vm.posts[i].type === "DRIVER2"){
+                    vm.posts[i].type = "DRIVER";
+                }
+            }
         }
     }
 })();

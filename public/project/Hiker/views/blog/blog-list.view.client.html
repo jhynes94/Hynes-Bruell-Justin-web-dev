@@ -1,62 +1,24 @@
 <nav class="navbar navbar-default navbar-static-top">
     <h3>Hike 4000</h3>
     <div class="Check_Icon"><a href="#/user/{{model.uid}}/post/{{model.type}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></div>
+
 </nav>
 
 <div class="container">
     <table class="table table-striped">
         <tbody ng-repeat="post in model.posts" ng-switch on="post.type">
         <tr ng-switch-when="HIKER">
-            <td ng-switch="widget.size">
+            <td>
                 <h1>Hiker</h1>
                 <h3>{{post.text}}</h3>
+                <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
             </td>
         </tr>
         <tr ng-switch-when="DRIVER">
-            <td ng-switch="widget.size">
+            <td>
                 <h1>Driver</h1>
                 <h3>{{post.text}}</h3>
-            </td>
-        </tr>
-        <tr ng-switch-when="IMAGE">
-            <td>
-                <img border="0" ng-src="{{widget.url}}" width="{{widget.width}}" height="auto">
-            </td>
-            <td>
-                <div class="widget-edits">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                    </a>
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
-            </td>
-        </tr>
-
-        <tr ng-switch-when="HTML">
-            <td ng-bind-html="model.getTrustedHtml(widget)">
-            </td>
-            <td>
-                <div class="widget-edits">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                    </a>
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
-            </td>
-        </tr>
-        <tr ng-switch-when="YOUTUBE">
-            <div class="video">
-                <td height="auto">
-                    <div class="video-container"><iframe width="80%" height="auto" ng-src="{{model.getTrustedUrl(widget)}}" frameborder="0" allowfullscreen></iframe></div>
-                </td>
-            </div>
-            <td>
-                <div class="widget-edits">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                    </a>
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
+                <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
             </td>
         </tr>
         </tbody>
@@ -67,8 +29,9 @@
     <div class="pull-left">
         <i class="fa fa-area-chart fa-2x"></i>
         <a href="#/weather"><i class="fa fa-sun-o fa-2x"></i></a>
-        <i class="fa fa-car fa-2x"></i>
-        <i class="fa fa-male fa-2x"></i>
+        <i ng-click="model.filtersDrivers()" class="fa fa-car fa-2x"></i>
+        <i ng-click="model.filtersHiker()" class="fa fa-male fa-2x"></i>
+        <i ng-click="model.filtersRest()" class="fa fa-recycle fa-2x"></i>
     </div>
     <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
 </footer>
