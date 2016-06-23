@@ -1,5 +1,5 @@
 .footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: auto;
@@ -144,4 +144,5 @@ tr {
 
 .fa {
     color: black;
+    padding-right: 20px;
 }

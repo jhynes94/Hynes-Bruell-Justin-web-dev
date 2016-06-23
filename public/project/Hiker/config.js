@@ -65,12 +65,20 @@
             .when("/user/:uid", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { "loggedin": checkLoggedin }
             })
             .when("/user/:uid/blog", {
                 templateUrl: "views/blog/blog-list.view.client.html",
                 controller: "BlogListController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { "loggedin": checkLoggedin }
+            })
+            .when("/user/:uid/post", {
+                templateUrl: "views/blog/blog-new.view.client.html",
+                controller: "NewBlogController",
+                controllerAs: "model",
+                resolve: { "loggedin": checkLoggedin }
             })
             .otherwise({
                 redirectTo: "/login"

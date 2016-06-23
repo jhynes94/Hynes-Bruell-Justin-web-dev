@@ -1,5 +1,5 @@
 (function() {
-    angular.module("BlogService")
+    angular.module("WebAppMaker")
         .factory("BlogService", BlogService);
 
     function BlogService($http) {

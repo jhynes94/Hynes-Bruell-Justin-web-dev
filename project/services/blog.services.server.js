@@ -12,11 +12,13 @@ module.exports = function (app, models) {
     
     function createPost(req, res) {
         var oldPost = req.body;
+        console.log(oldPost.type);
+        console.log(oldPost._user);
         blogModel
             .createPost(oldPost._user, oldPost)
             .then(
                 function (post) {
-                    post.data = "";
+                    /*post.data = null;
                     blogModel
                         .updatePost(post._id, post)
                         .then(
@@ -25,7 +27,8 @@ module.exports = function (app, models) {
                             },
                             function (error) {
                             }
-                        );
+                        );*/
+                    res.send(post);
                 },
                 function (error) {
                     res.status(400).send("Creation Error");

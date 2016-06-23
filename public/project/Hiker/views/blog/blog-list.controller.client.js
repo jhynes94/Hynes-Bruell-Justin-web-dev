@@ -3,24 +3,24 @@
         .module("WebAppMaker")
         .controller("BlogListController", BlogListController);
 
-    function BlogListController($routeParams, WidgetService, $sce) {
+    function BlogListController($routeParams, BlogService, $sce) {
         var vm = this;
         vm.getTrustedUrl = getTrustedUrl;
         vm.getTrustedHtml = getTrustedHtml;
 
         function init() {
             vm.uid = $routeParams["uid"];
-            vm.wid = $routeParams["wid"];
-            vm.pid = $routeParams["pid"];
+
+            
+            /*
             WidgetService
                 .findWidgetsByPageId(vm.pid)
                 .then(function(response) {
                     console.log(response.data);
                     vm.widgets = response.data;
                 });
-            console.log(vm.widgets);
-            
-            $( "#sortable" ).sortable({ axis: 'y', handle: '.fa-bars', placeholder: "ui-state-highlight"}).disableSelection();
+            console.log(vm.widgets);*/
+
         }
         init();
 
