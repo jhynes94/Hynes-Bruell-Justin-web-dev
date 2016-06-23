@@ -9,6 +9,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "forecast-io": "^1.0.2",
     "mongoose": "^4.4.16",
     "multer": "^1.1.0",
     "passport": "^0.3.2",
