@@ -3,12 +3,14 @@
         .module("WebAppMaker")
         .controller("BlogListController", BlogListController);
 
-    function BlogListController($routeParams, BlogService, $sce) {
+    function BlogListController($routeParams, BlogService, UserService, $sce) {
         var vm = this;
         vm.filtersHiker = filtersHiker;
         vm.filtersDrivers = filtersDrivers;
         vm.filtersRest = filtersRest;
         vm.search = search;
+        vm.invite = invite;
+        vm.join = join;
 
         function init() {
             vm.uid = $routeParams["uid"];
@@ -31,18 +33,46 @@
                 });
 
 
-
-            /*
-            WidgetService
-                .findWidgetsByPageId(vm.pid)
-                .then(function(response) {
-                    console.log(response.data);
-                    vm.widgets = response.data;
-                });
-            console.log(vm.widgets);*/
+            UserService
+                .findUserById(vm.uid)
+                .then(function (response) {
+                    vm.user = response.data;
+                })
 
         }
         init();
+
+
+        function invite(postId, post) {
+            console.log("Invite Pressed");
+
+            post.participant.push(vm.user.username);
+
+            BlogService.updatePost(postId, post)
+                .then(function (response) {
+                    vm.success = "User successfully updated";
+                    filtersRest();
+                }, function (error) {
+                    vm.error = "User not found";
+                });
+        }
+        
+        function join(postId, post) {
+            console.log("Join Pressed");
+
+            post.participant.push(vm.user.username);
+
+            BlogService.updatePost(postId, post)
+                .then(function (response) {
+                    vm.success = "User successfully updated";
+                    filtersRest();
+                }, function (error) {
+                    vm.error = "User not found";
+                });
+        }
+
+
+
 
         function search(query) {
             console.log("Searching for: " + query);
