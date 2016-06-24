@@ -75,7 +75,7 @@ module.exports = function (app, models) {
                     blogModel
                         .updatePost(post._id, post)
                         .then(
-                            function (page) {
+                            function (post) {
                                 res.send(post);
                             },
                             function (error) {

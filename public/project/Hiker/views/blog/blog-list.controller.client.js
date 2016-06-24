@@ -93,16 +93,18 @@
 
         function filtersRest() {
             console.log("Filter Reset");
-            for(var i in vm.posts){
-                if(vm.posts[i].type === "HIKER2"){
-                    vm.posts[i].type = "HIKER";
-                }
-            }
-            for(var i in vm.posts){
-                if(vm.posts[i].type === "DRIVER2"){
-                    vm.posts[i].type = "DRIVER";
-                }
-            }
+            BlogService
+                .getAllPosts()
+                .then(function (response) {
+                    console.log(response.data);
+                    vm.posts = response.data;
+                    if(vm.filter == "Hiker"){
+                        filtersHiker();
+                    }
+                    if(vm.filter == "Driver"){
+                        filtersDrivers();
+                    }
+                });
         }
     }
 })();

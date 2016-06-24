@@ -80,6 +80,7 @@ module.exports = function(assignDB) {
             {$set :
             {
                 type: post.type,
+                participant: post.participant,
                 text: post.text,
                 url: post.url,
                 width: post.width,

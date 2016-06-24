@@ -8,6 +8,7 @@ module.exports = function() {
         url: String,
         width: String,
         user: String,
+        participant: [],
         destination: String,
         pickup: String,
         pickupTime: String,

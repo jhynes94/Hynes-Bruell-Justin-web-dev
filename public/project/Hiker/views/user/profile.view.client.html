@@ -1,5 +1,8 @@
 <nav class="navbar navbar-default navbar-static-top">
-    <h3>Profile - {{model.user.type}}</h3>
+    <i ng-show="model.user.type === 'HIKER'" class="fa fa-male fa-2x"></i>
+    <i ng-show="model.user.type === 'DRIVER'" class="fa fa-car fa-2x"></i>
+    <h3>Profile</h3>
+
     <div class="Check_Icon">
         <a ng-click="model.updateUser()" class="navbar-link"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
     </div>
@@ -57,11 +60,19 @@
         <a href="#/user/{{model.user._id}}/blog/{{model.user.type}}" class="btn btn-block btn-primary" role="button">Blog</a>
     </fieldset>
     <fieldset class="form-group">
+        <a ng-show="model.user.type === 'HIKER'" href="#/user/{{model.user._id}}/post/{{model.user.type}}" class="btn btn-block btn-success" role="button">Add a Hike</a>
+        <a ng-show="model.user.type === 'DRIVER'" href="#/user/{{model.user._id}}/post/{{model.user.type}}" class="btn btn-block btn-success" role="button">Add a Ride</a>
+    </fieldset>
+    <fieldset class="form-group">
         <a ng-click="model.logout()" class="btn btn-block btn-danger" role="button">Logout</a>
     </fieldset>
     <fieldset class="form-group">
         <a ng-click="model.deleteAccount()" class="btn btn-block btn-danger" role="button">Delete Account</a>
     </fieldset>
+    <h1></h1>
+    <h2></h2>
+    <h3></h3>
+    <h1></h1>
 </form>
 <footer class="footer">
     <a href="#/user/{{model.user._id}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
