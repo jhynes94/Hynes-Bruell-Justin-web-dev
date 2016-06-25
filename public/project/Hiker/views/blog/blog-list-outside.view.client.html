@@ -18,7 +18,12 @@
                 <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                 <h3>Details: {{post.text}}</h3>
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
-                <a  href="#/login" class="btn btn-block btn-primary" role="button">Invite</a>
+
+                <h3 ng-show="post.participant.length > 0">People Interested:</h3>
+                <div ng-repeat="user in post.participant" ng-switch on="user">
+                    <h4>{{user}}</h4>
+                </div>
+
             </td>
         </tr>
         <tr ng-switch-when="DRIVER">
@@ -28,7 +33,12 @@
                 <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                 <h3>Details: {{post.text}}</h3>
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
-                <a  href="#/login" class="btn btn-block btn-primary" role="button">Join</a>
+
+                <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
+                <div ng-repeat="user in post.participant" ng-switch on="user">
+                    <h4>{{user}}</h4>
+                </div>
+
             </td>
         </tr>
         </tbody>
