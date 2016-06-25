@@ -3,11 +3,12 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService, $location, $rootScope) {
+    function ProfileController($routeParams, UserService, BlogService, $location, $rootScope) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.deleteAccount = deleteAccount;
         vm.logout = logout;
+        vm.deleteEvent = deleteEvent;
 
         var id = $routeParams["uid"];
         var index = -1;
@@ -23,6 +24,14 @@
                     })
             }
 
+            BlogService
+                .search(vm.user.username)
+                .then(function (response) {
+                    console.log("Results found for: " + vm.user.username);
+                    console.log(response.data);
+                    vm.posts = response.data;
+                });
+
 
             if (id === undefined || id === null){
                 console.log("Redirecting to Proper Address for user: "  + vm.user._id);
@@ -30,6 +39,25 @@
             }
         }
         init();
+
+        function deleteEvent(postId, post) {
+            console.log("Delete Event!");
+            BlogService
+                .deletePost(postId)
+                .then(function (response) {
+                    console.log("EventDeleted");
+                    console.log(response.data);
+                });
+
+            BlogService
+                .search(vm.user.username)
+                .then(function (response) {
+                    console.log("Results found for: " + vm.user.username);
+                    console.log(response.data);
+                    vm.posts = response.data;
+                });
+
+        }
 
 
         function logout() {
