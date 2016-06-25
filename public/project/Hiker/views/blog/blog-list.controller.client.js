@@ -46,6 +46,16 @@
         function invite(postId, post) {
             console.log("Invite Pressed");
 
+
+            //post.participant = [];
+
+            for(var i in post.participant){
+                if(post.participant[i] === vm.user.username){
+                    post.participant.splice( i, 1 );
+                    return null;
+                }
+            }
+
             post.participant.push(vm.user.username);
 
             BlogService.updatePost(postId, post)
@@ -59,6 +69,15 @@
         
         function join(postId, post) {
             console.log("Join Pressed");
+
+            //post.participant = [];
+
+            for(var i in post.participant){
+                if(post.participant[i] === vm.user.username){
+                    post.participant.splice( i, 1 );
+                    return null;
+                }
+            }
 
             post.participant.push(vm.user.username);
 

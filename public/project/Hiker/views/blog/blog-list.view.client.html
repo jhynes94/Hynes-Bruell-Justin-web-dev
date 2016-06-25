@@ -20,14 +20,14 @@
                 <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                 <h3>Details: {{post.text}}</h3>
 
-                <h3 ng-show="post.participant.length > 0">People</h3>
+                <h3 ng-show="post.participant.length > 0">People Interested:</h3>
                 <div ng-repeat="user in post.participant" ng-switch on="user">
                     <h4>{{user}}</h4>
                 </div>
 
 
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
-                <a ng-click="model.invite(post._id, post)" class="btn btn-block btn-primary" role="button">Invite</a>
+                <a ng-click="model.invite(post._id, post)" class="btn btn-block btn-primary" role="button">Join/Leave Potential Hike</a>
             </td>
         </tr>
         <tr ng-switch-when="DRIVER">
@@ -37,14 +37,14 @@
                 <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                 <h3>Details: {{post.text}}</h3>
 
-                <h3 ng-show="post.participant.length > 0">People</h3>
+                <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
                 <div ng-repeat="user in post.participant" ng-switch on="user">
                     <h4>{{user}}</h4>
                 </div>
 
 
                 <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
-                <a ng-click="model.join(post._id, post)" class="btn btn-block btn-primary" role="button">Join</a>
+                <a ng-click="model.join(post._id, post)" class="btn btn-block btn-primary" role="button">Join/Depart the Pool</a>
             </td>
         </tr>
         </tbody>
