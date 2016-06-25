@@ -51,6 +51,14 @@ module.exports = function (app, models) {
                             posts.splice(i, 1);
                         }
                     }
+                    for(var i in posts){
+                        for(var j in posts){
+                            if(posts[i].participant[j] === query){
+                                postsToSend.push(posts[i]);
+                                posts.splice(i, 1);
+                            }
+                        }
+                    }
 
                     res.send(postsToSend);
                 },

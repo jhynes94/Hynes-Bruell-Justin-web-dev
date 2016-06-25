@@ -52,6 +52,13 @@
             for(var i in post.participant){
                 if(post.participant[i] === vm.user.username){
                     post.participant.splice( i, 1 );
+                    BlogService.updatePost(postId, post)
+                        .then(function (response) {
+                            vm.success = "User successfully updated";
+                            filtersRest();
+                        }, function (error) {
+                            vm.error = "User not found";
+                        });
                     return null;
                 }
             }
@@ -75,6 +82,13 @@
             for(var i in post.participant){
                 if(post.participant[i] === vm.user.username){
                     post.participant.splice( i, 1 );
+                    BlogService.updatePost(postId, post)
+                        .then(function (response) {
+                            vm.success = "User successfully updated";
+                            filtersRest();
+                        }, function (error) {
+                            vm.error = "User not found";
+                        });
                     return null;
                 }
             }
@@ -83,6 +97,7 @@
 
             BlogService.updatePost(postId, post)
                 .then(function (response) {
+                    console.log("SuccessfulUpdate")
                     vm.success = "User successfully updated";
                     filtersRest();
                 }, function (error) {
