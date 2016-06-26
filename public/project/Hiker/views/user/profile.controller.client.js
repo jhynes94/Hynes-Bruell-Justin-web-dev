@@ -9,6 +9,8 @@
         vm.deleteAccount = deleteAccount;
         vm.logout = logout;
         vm.deleteEvent = deleteEvent;
+        vm.invite = invite;
+        vm.join = join;
 
         var id = $routeParams["uid"];
         var index = -1;
@@ -40,6 +42,69 @@
         }
         init();
 
+        function invite(postId, post) {
+            console.log("Invite Pressed");
+
+
+            //post.participant = [];
+
+            for(var i in post.participant){
+                if(post.participant[i] === vm.user.username){
+                    post.participant.splice( i, 1 );
+                    BlogService.updatePost(postId, post)
+                        .then(function (response) {
+                            vm.success = "User successfully updated";
+                            filtersRest();
+                        }, function (error) {
+                            vm.error = "User not found";
+                        });
+                    return null;
+                }
+            }
+
+            post.participant.push(vm.user.username);
+
+            BlogService.updatePost(postId, post)
+                .then(function (response) {
+                    vm.success = "User successfully updated";
+                    filtersRest();
+                }, function (error) {
+                    vm.error = "User not found";
+                });
+        }
+
+        function join(postId, post) {
+            console.log("Join Pressed");
+
+            //post.participant = [];
+
+            for(var i in post.participant){
+                if(post.participant[i] === vm.user.username){
+                    post.participant.splice( i, 1 );
+                    BlogService.updatePost(postId, post)
+                        .then(function (response) {
+                            vm.success = "User successfully updated";
+                            filtersRest();
+                        }, function (error) {
+                            vm.error = "User not found";
+                        });
+                    return null;
+                }
+            }
+
+            post.participant.push(vm.user.username);
+
+            BlogService.updatePost(postId, post)
+                .then(function (response) {
+                    console.log("SuccessfulUpdate")
+                    vm.success = "User successfully updated";
+                    filtersRest();
+                }, function (error) {
+                    vm.error = "User not found";
+                });
+        }
+
+        
         function deleteEvent(postId, post) {
             console.log("Delete Event!");
             BlogService

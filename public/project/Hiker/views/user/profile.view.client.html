@@ -73,35 +73,54 @@
             <tr ng-switch-when="HIKER">
                 <td>
                     <i class="fa fa-male fa-4x"></i>
-                    <h2>Hiker: {{post.user}}</h2>
-                    <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
-                    <h3>Details: {{post.text}}</h3>
-
-                    <h3 ng-show="post.participant.length > 0">People Interested:</h3>
-                    <div ng-repeat="user in post.participant" ng-switch on="user">
-                        <h4>{{user}}</h4>
+                    <div class="container">
+                        <h2>Hiker: {{post.user}}</h2>
+                    </div>
+                    <div class="container">
+                        <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                     </div>
 
+                    <div class="container">
+                        <h3>Details: {{post.text}}</h3>
+                    </div>
 
+                    <div class="container">
+                        <h3 ng-show="post.participant.length > 0">People Interested:</h3>
+                        <div ng-repeat="user in post.participant" ng-switch on="user">
+                            <h4>{{user}}</h4>
+                        </div>
+                    </div>
+
+                    <a ng-click="model.invite(post._id, post)" class="btn btn-block btn-primary" role="button">Leave Potential Hike</a>
                     <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
-                    <a ng-click="model.deleteEvent(post._id, post)" class="btn btn-block btn-danger" role="button">Delete Event</a>
+                    <a ng-show="post.user === model.user.username" ng-click="model.deleteEvent(post._id, post)" class="btn btn-block btn-danger" role="button">Delete Event</a>
                 </td>
             </tr>
             <tr ng-switch-when="DRIVER">
                 <td>
                     <i class="fa fa-car fa-4x"></i>
-                    <h2>Driver: {{post.user}}</h2>
-                    <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
-                    <h3>Details: {{post.text}}</h3>
 
-                    <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
-                    <div ng-repeat="user in post.participant" ng-switch on="user">
-                        <h4>{{user}}</h4>
+                    <div class="container"></div>
+                    <h2>Driver: {{post.user}}</h2>
+
+                    <div class="container">
+                        <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                     </div>
 
+                    <div class="container">
+                        <h3>Details: {{post.text}}</h3>
+                    </div>
 
+                    <div class="container">
+                        <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
+                        <div ng-repeat="user in post.participant" ng-switch on="user">
+                            <h4>{{user}}</h4>
+                        </div>
+                    </div>
+
+                    <a ng-click="model.join(post._id, post)" class="btn btn-block btn-primary" role="button">Depart the Pool</a>
                     <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
-                    <a ng-click="model.deleteEvent(post._id, post)" class="btn btn-block btn-danger" role="button">Delete Event</a>
+                    <a ng-show="post.user === model.user.username" ng-click="model.deleteEvent(post._id, post)" class="btn btn-block btn-danger" role="button">Delete Event</a>
                 </td>
             </tr>
             </tbody>

@@ -16,13 +16,22 @@
         <tr ng-switch-when="HIKER">
             <td>
                 <i class="fa fa-male fa-4x"></i>
-                <h2>Hiker: {{post.user}}</h2>
-                <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
-                <h3>Details: {{post.text}}</h3>
+                <div class="container">
+                    <h2>Hiker: {{post.user}}</h2>
+                </div>
+                <div class="container">
+                    <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
+                </div>
 
-                <h3 ng-show="post.participant.length > 0">People Interested:</h3>
-                <div ng-repeat="user in post.participant" ng-switch on="user">
-                    <h4>{{user}}</h4>
+                <div class="container">
+                    <h3>Details: {{post.text}}</h3>
+                </div>
+
+                <div class="container">
+                    <h3 ng-show="post.participant.length > 0">People Interested:</h3>
+                    <div ng-repeat="user in post.participant" ng-switch on="user">
+                        <h4>{{user}}</h4>
+                    </div>
                 </div>
 
 
@@ -33,17 +42,25 @@
         <tr ng-switch-when="DRIVER">
             <td>
                 <i class="fa fa-car fa-4x"></i>
-                <h2>Driver: {{post.user}}</h2>
-                <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
-                <h3>Details: {{post.text}}</h3>
 
-                <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
-                <div ng-repeat="user in post.participant" ng-switch on="user">
-                    <h4>{{user}}</h4>
+                <div class="container"></div>
+                <h2>Driver: {{post.user}}</h2>
+
+                <div class="container">
+                    <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
                 </div>
 
+                <div class="container">
+                    <h3>Details: {{post.text}}</h3>
+                </div>
 
-                <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
+                <div class="container">
+                    <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
+                    <div ng-repeat="user in post.participant" ng-switch on="user">
+                        <h4>{{user}}</h4>
+                    </div>
+                </div>
+
                 <a ng-click="model.join(post._id, post)" class="btn btn-block btn-primary" role="button">Join/Depart the Pool</a>
             </td>
         </tr>
