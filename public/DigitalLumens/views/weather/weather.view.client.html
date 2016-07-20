@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <h3>Weather</h3>
+</nav>
+
+<div class="container">
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td>
+                <h1>Pemigewasset Wilderness</h1>
+                <h3><b>Today</b></h3>
+                <h4>{{model.Pemi.currently.summary}}</h4>
+                <h4>Storm Bearing Proximity: {{model.Pemi.currently.nearestStormBearing}} miles</h4>
+                <h3><b>Week</b></h3>
+                <h4>{{model.Pemi.daily.summary}}</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h1>Mt. Washington</h1>
+                <h3><b>Today</b></h3>
+                <h4>{{model.Washington.currently.summary}}</h4>
+                <h4>Storm Bearing Proximity: {{model.Washington.currently.nearestStormBearing}} miles</h4>
+                <h3><b>Week</b></h3>
+                <h4>{{model.Washington.daily.summary}}</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h1>Waterville Vally</h1>
+                <h3><b>Today</b></h3>
+                <h4>{{model.Waterville.currently.summary}}</h4>
+                <h4>Storm Bearing Proximity: {{model.Waterville.currently.nearestStormBearing}} miles</h4>
+                <h3><b>Week</b></h3>
+                <h4>{{model.Waterville.daily.summary}}</h4>
+            </td>
+        </tr>
+    </table>
+</div>
+<p></p>
+<footer class="footer">
+    <div class="pull-right">
+        <a href="../index.html"><i class="fa fa-home fa-2x"></i></a>
+    </div>
+</footer>

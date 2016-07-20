@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <h3>Hike 4000</h3>
+    <div class="Check_Icon"><a href="#/user/{{model.uid}}/post/{{model.type}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></div>
+
+</nav>
+
+<div class="container">
+    <table class="table table-striped">
+        <fieldset class="form-group">
+            <div class="form-group">
+                <input ng-model="model.searchQuery" type="text" class="form-control" id="name" placeholder="Search Query">
+                <a ng-click="model.search(model.searchQuery)" class="btn btn-block btn-primary" role="button">Search!</a>
+            </div>
+        </fieldset>
+        <tbody ng-repeat="post in model.posts" ng-switch on="post.type">
+        <tr ng-switch-when="HIKER">
+            <td>
+                <i class="fa fa-male fa-4x"></i>
+                <div class="container">
+                    <h2>Hiker: {{post.user}}</h2>
+                </div>
+                <div class="container">
+                    <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
+                </div>
+
+                <div class="container">
+                    <h3>Details: {{post.text}}</h3>
+                </div>
+
+                <div class="container">
+                    <h3 ng-show="post.participant.length > 0">People Interested:</h3>
+                    <div ng-repeat="user in post.participant" ng-switch on="user">
+                        <h4>{{user}}</h4>
+                    </div>
+                </div>
+
+
+                <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
+                <a ng-click="model.invite(post._id, post)" class="btn btn-block btn-primary" role="button">Join/Leave Potential Hike</a>
+            </td>
+        </tr>
+        <tr ng-switch-when="DRIVER">
+            <td>
+                <i class="fa fa-car fa-4x"></i>
+
+                <div class="container"></div>
+                <h2>Driver: {{post.user}}</h2>
+
+                <div class="container">
+                    <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
+                </div>
+
+                <div class="container">
+                    <h3>Details: {{post.text}}</h3>
+                </div>
+
+                <div class="container">
+                    <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
+                    <div ng-repeat="user in post.participant" ng-switch on="user">
+                        <h4>{{user}}</h4>
+                    </div>
+                </div>
+
+                <a ng-click="model.join(post._id, post)" class="btn btn-block btn-primary" role="button">Join/Depart the Pool</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<p></p>
+<footer class="footer">
+    <div class="pull-left">
+        <!--
+        <i class="fa fa-area-chart fa-2x"></i>
+        -->
+        <a href="#/weather"><i class="fa fa-sun-o fa-2x"></i></a>
+        <i ng-click="model.filtersDrivers()" class="fa fa-car fa-2x"></i>
+        <i ng-click="model.filtersHiker()" class="fa fa-male fa-2x"></i>
+        <i ng-click="model.filtersRest()" class="fa fa-recycle fa-2x"></i>
+    </div>
+    <a href="#/user/{{model.uid}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>

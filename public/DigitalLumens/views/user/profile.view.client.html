@@ -1,0 +1,147 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <i ng-show="model.user.type === 'HIKER'" class="fa fa-male fa-2x"></i>
+    <i ng-show="model.user.type === 'DRIVER'" class="fa fa-car fa-2x"></i>
+    <h3>Profile</h3>
+
+    <div class="Check_Icon">
+        <a ng-click="model.updateUser()" class="navbar-link"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+    </div>
+</nav>
+
+<div ng-show="model.success" class="alert alert-success">
+    {{model.success}}
+</div>
+
+<div ng-show="model.error" class="alert alert-danger">
+    {{model.error}}
+</div>
+
+<form>
+    <fieldset class="form-group simple-form">
+        <label for="username">Username</label>
+        <input
+                ng-model="model.user.username"
+                name="username"
+                id="username"
+                type="text"
+                placeholder="username"
+                class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="email">Email</label>
+        <input
+                ng-model="model.user.email"
+                name="email"
+                id="email"
+                type="email"
+                placeholder="email"
+                class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+               ng-model="model.user.firstName"
+               name="firstName"
+               id="firstName"
+               type="text"
+               placeholder="First Name"
+               class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="lastName">Last Name</label>
+        <input name="lastName"
+               ng-model="model.user.lastName"
+               id="lastName"
+               type="text"
+               placeholder="Last Name"
+               class="form-control"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <a href="#/user/{{model.user._id}}/blog/{{model.user.type}}" class="btn btn-block btn-primary" role="button">Blog</a>
+    </fieldset>
+    <fieldset class="form-group">
+        <a ng-show="model.user.type === 'HIKER'" href="#/user/{{model.user._id}}/post/{{model.user.type}}" class="btn btn-block btn-success" role="button">Add a Hike</a>
+        <a ng-show="model.user.type === 'DRIVER'" href="#/user/{{model.user._id}}/post/{{model.user.type}}" class="btn btn-block btn-success" role="button">Add a Ride</a>
+    </fieldset>
+
+
+    <div class="container">
+        <h1>Your Posts:</h1>
+        <h2 ng-show="model.posts.length === 0"><strong>Press the Green Add to create one!</strong></h2>
+        <table class="table table-striped">
+            <tbody ng-repeat="post in model.posts" ng-switch on="post.type">
+            <tr ng-switch-when="HIKER">
+                <td>
+                    <i class="fa fa-male fa-4x"></i>
+                    <div class="container">
+                        <h2>Hiker: {{post.user}}</h2>
+                    </div>
+                    <div class="container">
+                        <h3>Would like to goto <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
+                    </div>
+
+                    <div class="container">
+                        <h3>Details: {{post.text}}</h3>
+                    </div>
+
+                    <div class="container">
+                        <h3 ng-show="post.participant.length > 0">People Interested:</h3>
+                        <div ng-repeat="user in post.participant" ng-switch on="user">
+                            <h4>{{user}}</h4>
+                        </div>
+                    </div>
+
+                    <a ng-click="model.invite(post._id, post)" class="btn btn-block btn-primary" role="button">Leave Potential Hike</a>
+                    <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
+                    <a ng-show="post.user === model.user.username" ng-click="model.deleteEvent(post._id, post)" class="btn btn-block btn-danger" role="button">Delete Event</a>
+                </td>
+            </tr>
+            <tr ng-switch-when="DRIVER">
+                <td>
+                    <i class="fa fa-car fa-4x"></i>
+
+                    <div class="container"></div>
+                    <h2>Driver: {{post.user}}</h2>
+
+                    <div class="container">
+                        <h3>Is going to <b>{{post.destination}}</b> on <b>{{post.pickupTime}}</b>, leaving from <b>{{post.pickup}}</b></h3>
+                    </div>
+
+                    <div class="container">
+                        <h3>Details: {{post.text}}</h3>
+                    </div>
+
+                    <div class="container">
+                        <h3 ng-show="post.participant.length > 0">Car Pool:</h3>
+                        <div ng-repeat="user in post.participant" ng-switch on="user">
+                            <h4>{{user}}</h4>
+                        </div>
+                    </div>
+
+                    <a ng-click="model.join(post._id, post)" class="btn btn-block btn-primary" role="button">Depart the Pool</a>
+                    <img border="0" ng-src="{{post.url}}" width="{{post.width}}" height="auto">
+                    <a ng-show="post.user === model.user.username" ng-click="model.deleteEvent(post._id, post)" class="btn btn-block btn-danger" role="button">Delete Event</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <fieldset class="form-group">
+        <a ng-click="model.logout()" class="btn btn-block btn-danger" role="button">Logout</a>
+    </fieldset>
+    <fieldset class="form-group">
+        <a ng-click="model.deleteAccount()" class="btn btn-block btn-danger" role="button">Delete Account</a>
+    </fieldset>
+    <h1></h1>
+    <h2></h2>
+    <h3></h3>
+    <h1></h1>
+</form>
+
+
+<footer class="footer">
+    <a href="#/user/{{model.user._id}}"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+</footer>
